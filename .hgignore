@@ -1,0 +1,27 @@
+# use glob syntax
+syntax: glob
+
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+proguard_cache/
+tmp/
+
+# Local configuration file (sdk path, etc)
+local.properties
+.cache
+.settings/
+
+# Emacs files
+*~
+\#*\#
