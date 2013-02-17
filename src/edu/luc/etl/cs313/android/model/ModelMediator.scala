@@ -1,4 +1,4 @@
-package edu.luc.etl.cs313.model
+package edu.luc.etl.cs313.android.model
 
 trait ModelMediator[S, B] {
 

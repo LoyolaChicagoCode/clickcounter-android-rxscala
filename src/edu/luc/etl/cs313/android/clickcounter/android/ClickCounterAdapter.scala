@@ -1,5 +1,5 @@
-package edu.luc.etl.cs313.android.clickcounter
-package android
+package edu.luc.etl.cs313.android
+package clickcounter.android
 
 import _root_.android.app.Activity
 import _root_.android.os.Bundle
@@ -8,9 +8,9 @@ import _root_.android.view.Menu
 import _root_.android.view.View
 import _root_.android.widget.Button
 import _root_.android.widget.TextView
-import edu.luc.etl.cs313.model._
-import edu.luc.etl.cs313.android.clickcounter.R
-import model._
+import edu.luc.etl.cs313.android.model._
+import clickcounter.R
+import clickcounter.model._
 
 
 class ClickCounterAdapter extends Activity with ModelMediator[Int, Counter] with DefaultOrElseValues {

@@ -1,5 +1,4 @@
-package edu.luc.etl.cs313.android.clickcounter
-package model
+package edu.luc.etl.cs313.android.clickcounter.model
 
 /**
  * An immutable counter abstraction.
