@@ -8,38 +8,18 @@ import _root_.android.view.Menu
 import _root_.android.view.View
 import _root_.android.widget.Button
 import _root_.android.widget.TextView
+import edu.luc.etl.cs313.model._
 import edu.luc.etl.cs313.android.clickcounter.R
-import model.Counter
-import edu.luc.etl.cs313.android.clickcounter.model.StatelessBoundedCounter
+import model._
 
-class MainActivity extends Activity {
 
+class ClickCounterAdapter extends Activity with ModelMediator[Int, Counter] with DefaultOrElseValues {
+
+  // TODO testing
   // TODO slider and additional textview for max counter value
   // TODO enable assertions
 
   private def TAG = "clickcounter-android-activity"
-
-  /**
-   * Explicit dependency on the model. (The dependency on the view is
-   * implicit.)
-   */
-
-  private var behavior: Option[Counter] = None
-
-  private var state: Option[Int] = None
-
-  protected def transform(transformer: Int => Option[Int]) {
-    val old = state
-    state = state flatMap transformer
-    if (state != old) updateView()
-  }
-
-  protected def check(checker: Int => Boolean) = state map checker getOrElse false
-
-  /**
-   * Setter for the model.
-   */
-  def setModel(model: Counter) { this.behavior = Some(model) }
 
   override protected def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
@@ -49,8 +29,8 @@ class MainActivity extends Activity {
     // self-inject the dependency on the model
     // FIXME
     // setModel(createModelFromClassName())
-    setModel(new StatelessBoundedCounter())
-    state = Some(behavior.get.min)
+    setBehavior(new StatelessBoundedCounter())
+    setState(behavior.get.min)
   }
 
   override protected def onStart() {
@@ -111,11 +91,11 @@ class MainActivity extends Activity {
   /**
    * Updates the view from the model.
    */
-  protected def updateView() {
+  protected implicit def updateView() {
     // update display
-    findViewById(R.id.textview_value).asInstanceOf[TextView].setText(state.getOrElse(-1).toString)
+    findViewById(R.id.textview_value).asInstanceOf[TextView].setText(access { identity } toString)
     // afford controls according to model state
-    findViewById(R.id.button_increment).asInstanceOf[Button].setEnabled(!check { behavior.get.isFull })
-    findViewById(R.id.button_decrement).asInstanceOf[Button].setEnabled(!check { behavior.get.isEmpty })
+    findViewById(R.id.button_increment).asInstanceOf[Button].setEnabled(!access { behavior.get.isFull })
+    findViewById(R.id.button_decrement).asInstanceOf[Button].setEnabled(!access { behavior.get.isEmpty })
   }
 }
