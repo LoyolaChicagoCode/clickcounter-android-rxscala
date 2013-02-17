@@ -10,7 +10,7 @@ import _root_.android.widget.Button
 import _root_.android.widget.TextView
 import edu.luc.etl.cs313.android.clickcounter.R
 import model.Counter
-import edu.luc.etl.cs313.android.clickcounter.model.DefaultBoundedCounter
+import edu.luc.etl.cs313.android.clickcounter.model.StatelessBoundedCounter
 
 class MainActivity extends Activity {
 
@@ -24,12 +24,22 @@ class MainActivity extends Activity {
    * implicit.)
    */
 
-  private var model: Option[Counter] = None
+  private var behavior: Option[Counter] = None
+
+  private var state: Option[Int] = None
+
+  protected def transform(transformer: Int => Option[Int]) {
+    val old = state
+    state = state flatMap transformer
+    if (state != old) updateView()
+  }
+
+  protected def check(checker: Int => Boolean) = state map checker getOrElse false
 
   /**
    * Setter for the model.
    */
-  def setModel(model: Counter) { this.model = Some(model) }
+  def setModel(model: Counter) { this.behavior = Some(model) }
 
   override protected def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
@@ -39,7 +49,8 @@ class MainActivity extends Activity {
     // self-inject the dependency on the model
     // FIXME
     // setModel(createModelFromClassName())
-    setModel(new DefaultBoundedCounter())
+    setModel(new StatelessBoundedCounter())
+    state = Some(behavior.get.min)
   }
 
   override protected def onStart() {
@@ -79,10 +90,7 @@ class MainActivity extends Activity {
    * @param view
    *            the event source
    */
-  def onIncrement(view: View) {
-    model.get.increment();
-    updateView();
-  }
+  def onIncrement(view: View) { transform { behavior.get.increment } }
 
   /**
    * Handles the semantic decrement event.
@@ -90,10 +98,7 @@ class MainActivity extends Activity {
    * @param view
    *            the event source
    */
-  def onDecrement(view: View) {
-    model.get.decrement()
-    updateView()
-  }
+  def onDecrement(view: View) { transform { behavior.get.decrement } }
 
   /**
    * Handles the semantic decrement event.
@@ -101,19 +106,16 @@ class MainActivity extends Activity {
    * @param view
    *            the event source
    */
-  def onReset(view: View) {
-    model.get.reset()
-    updateView()
-  }
+  def onReset(view: View) { transform { behavior.get.reset } }
 
   /**
    * Updates the view from the model.
    */
   protected def updateView() {
     // update display
-    findViewById(R.id.textview_value).asInstanceOf[TextView].setText(model.get.get.toString)
+    findViewById(R.id.textview_value).asInstanceOf[TextView].setText(state.getOrElse(-1).toString)
     // afford controls according to model state
-    findViewById(R.id.button_increment).asInstanceOf[Button].setEnabled(!model.get.isFull)
-    findViewById(R.id.button_decrement).asInstanceOf[Button].setEnabled(!model.get.isEmpty)
+    findViewById(R.id.button_increment).asInstanceOf[Button].setEnabled(!check { behavior.get.isFull })
+    findViewById(R.id.button_decrement).asInstanceOf[Button].setEnabled(!check { behavior.get.isEmpty })
   }
 }
