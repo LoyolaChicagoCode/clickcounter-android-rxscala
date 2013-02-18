@@ -29,15 +29,11 @@ trait Counter {
 
   /**
    * Indicates whether the counter is full (at its maximum).
-   *
-   * @return whether the counter is full
    */
   def isFull(value: Int): Boolean
 
   /**
    * Indicates whether the counter is empty (at its minimum).
-   *
-   * @return whether the counter is empty
    */
   def isEmpty(value: Int): Boolean
 }

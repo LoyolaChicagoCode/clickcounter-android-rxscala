@@ -12,7 +12,11 @@ import edu.luc.etl.cs313.android.model._
 import clickcounter.R
 import clickcounter.model._
 
-
+/**
+ * The Adapter in the Model-View-Adapter pattern. It connects the
+ * Android GUI view with the model, consisting of behavior and state,
+ * by mapping semantic events to state transformations.
+ */
 class ClickCounterAdapter extends Activity with ModelMediator[Int, Counter] with DefaultOrElseValues {
 
   // TODO testing
@@ -26,9 +30,9 @@ class ClickCounterAdapter extends Activity with ModelMediator[Int, Counter] with
     Log.i(TAG, "onCreate")
     // inject the (implicit) dependency on the view
     setContentView(R.layout.activity_click_counter)
-    // self-inject the dependency on the model
+    // inject the dependency on the model
     // FIXME
-    // setModel(createModelFromClassName())
+    // setModel(createBehaviorFromClassName())
     setBehavior(new StatelessBoundedCounter())
     setState(behavior.get.min)
   }
@@ -48,10 +52,8 @@ class ClickCounterAdapter extends Activity with ModelMediator[Int, Counter] with
   /**
    * Creates a model instance from the class name provided as the string value
    * of the external model_class resource.
-   *
-   * @return
    */
-  protected def createModelFromClassName(): Counter = {
+  protected def createBehaviorFromClassName(): Counter = {
     // for flexibility, instantiate model based on externally configured
     // class name
     // FIXME newInstance fails
@@ -66,30 +68,21 @@ class ClickCounterAdapter extends Activity with ModelMediator[Int, Counter] with
    * corresponding onClick events (actual button presses) in the view itself,
    * usually with the help of the graphical layout editor; the connection also
    * shows up in the XML source of the view layout.
-   *
-   * @param view
-   *            the event source
    */
   def onIncrement(view: View) { transform { behavior.get.increment } }
 
   /**
    * Handles the semantic decrement event.
-   *
-   * @param view
-   *            the event source
    */
   def onDecrement(view: View) { transform { behavior.get.decrement } }
 
   /**
    * Handles the semantic decrement event.
-   *
-   * @param view
-   *            the event source
    */
   def onReset(view: View) { transform { behavior.get.reset } }
 
   /**
-   * Updates the view from the model.
+   * Updates the view from the model. Implicit so `transform` picks it up.
    */
   protected implicit def updateView() {
     // update display

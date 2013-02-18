@@ -1,5 +1,8 @@
 package edu.luc.etl.cs313.android.clickcounter.model
 
+/**
+ * An purely functional, stateless implementation of a bounded counter.
+ */
 class StatelessBoundedCounter(_min: Int = 0, _max: Int = 10) extends Counter {
 
   require { _min < _max }
