@@ -14,7 +14,8 @@ trait ModelMediator[S, B] {
   protected var state: Option[S] = None
 
   /**
-   * The behavior for transforming the state. Typical behaviors
+   * The behavior for transforming the state. Typical behaviors expose
+   * suitable transformers and accessors.
    */
   protected var behavior: Option[B] = None
 
