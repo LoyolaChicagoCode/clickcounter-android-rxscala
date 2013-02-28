@@ -8,6 +8,7 @@ import _root_.android.view.Menu
 import _root_.android.view.View
 import _root_.android.widget.Button
 import _root_.android.widget.TextView
+import scala.language.postfixOps
 import edu.luc.etl.cs313.android.scala.model._
 import model._
 
