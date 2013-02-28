@@ -14,12 +14,16 @@ syntax: glob
 # generated files
 bin/
 gen/
+libs/
 proguard_cache/
+target/
 tmp/
 
 # Local configuration file (sdk path, etc)
 local.properties
 .cache
+.classpath
+.project
 .settings/
 
 # Emacs files
