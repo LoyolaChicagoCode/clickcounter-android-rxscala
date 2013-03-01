@@ -11,7 +11,8 @@ object General {
     version := "0.1",
     versionCode := 0,
     scalaVersion := "2.10.1-RC1",
-    platformName in Android := "android-17"
+    platformName in Android := "android-17",
+    parallelExecution in Test := false
   )
 
   // Default Proguard settings

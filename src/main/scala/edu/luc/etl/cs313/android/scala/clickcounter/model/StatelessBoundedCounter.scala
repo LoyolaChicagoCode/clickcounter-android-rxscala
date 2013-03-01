@@ -20,14 +20,12 @@ class StatelessBoundedCounter(_min: Int = 0, _max: Int = 10) extends Counter {
 
   override def max = _max
 
-  override def increment(value: Int) = for { _ <- Some(())
-    if dataInvariant(value) && !isFull(value)
+  override def increment(value: Int) = for {
     result <- Some(value + 1)
     if dataInvariant(result)
   } yield result
 
-  override def decrement(value: Int) = for { _ <- Some(())
-    if dataInvariant(value) && !isEmpty(value)
+  override def decrement(value: Int) = for {
     result <- Some(value - 1)
     if dataInvariant(result)
   } yield result
