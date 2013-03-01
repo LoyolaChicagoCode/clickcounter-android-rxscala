@@ -17,7 +17,7 @@ import model._
  * Android GUI view with the model, consisting of behavior and state,
  * by mapping semantic events to state transformations.
  */
-class ClickCounterAdapter extends Activity with ModelMediator[Int, Counter] with DefaultOrElseValues {
+class ClickCounterAdapter extends Activity with TypedActivity with ModelMediator[Int, Counter] with DefaultOrElseValues {
 
   // TODO testing
   // TODO slider and additional textview for max counter value
@@ -47,14 +47,14 @@ class ClickCounterAdapter extends Activity with ModelMediator[Int, Counter] with
    * Creates a model instance from the class name provided as the string value
    * of the external model_class resource.
    */
-  protected def createBehaviorFromClassName(): Counter = {
-    // for flexibility, instantiate model based on externally configured
-    // class name
-    // FIXME newInstance fails
-    Class
-      .forName(getResources().getString(R.string.model_class))
-      .asSubclass(classOf[Counter]).newInstance()
-  }
+//  protected def createBehaviorFromClassName(): Counter = {
+//    // for flexibility, instantiate model based on externally configured
+//    // class name
+//    // FIXME newInstance fails
+//    Class
+//      .forName(getResources().getString(R.string.model_class))
+//      .asSubclass(classOf[Counter]).newInstance()
+//  }
 
   /**
    * Handles the semantic increment event. (Semantic as opposed to, say, a
@@ -80,9 +80,9 @@ class ClickCounterAdapter extends Activity with ModelMediator[Int, Counter] with
    */
   protected implicit def updateView() {
     // update display
-    findViewById(R.id.textview_value).asInstanceOf[TextView].setText(access { identity } toString)
+    findView(TR.textview_value).setText(access { identity } toString)
     // afford controls according to model state
-    findViewById(R.id.button_increment).asInstanceOf[Button].setEnabled(!access { behavior.get.isFull })
-    findViewById(R.id.button_decrement).asInstanceOf[Button].setEnabled(!access { behavior.get.isEmpty })
+    findView(TR.button_increment).setEnabled(!access { behavior.get.isFull })
+    findView(TR.button_decrement).setEnabled(!access { behavior.get.isEmpty })
   }
 }
