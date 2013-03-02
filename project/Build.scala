@@ -10,7 +10,6 @@ object General {
     name := "clickcounter-android-scala",
     version := "0.1",
     versionCode := 0,
-//    scalaVersion := "2.10.1-RC2",
     scalaVersion := "2.10.1-RC2",
     platformName in Android := "android-17",
     parallelExecution in Test := false
@@ -37,7 +36,12 @@ object General {
     AndroidManifestGenerator.settings ++
     AndroidMarketPublish.settings ++ Seq (
       keyalias in Android := "change-me",
-      libraryDependencies += "org.scalatest" % "scalatest_2.10.0-RC3" % "2.0.M5-B1" % "test"
+      libraryDependencies ++= Seq(
+        "org.robolectric" % "robolectric" % "2.0-alpha-1",
+        "junit" % "junit" % "4.11",
+        "com.novocode" % "junit-interface" % "0.10-M2" % "test",
+        "org.scalatest" % "scalatest_2.10.0-RC3" % "2.0.M5-B1" % "test"
+      )
     )
 }
 

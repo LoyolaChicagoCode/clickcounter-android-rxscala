@@ -25,7 +25,7 @@ class ClickCounterAdapter extends Activity with TypedActivity with ModelMediator
 
   private def TAG = "clickcounter-android-activity"
 
-  override protected def onCreate(savedInstanceState: Bundle) {
+  override protected[android] def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
     Log.i(TAG, "onCreate")
     // inject the (implicit) dependency on the view
@@ -37,7 +37,7 @@ class ClickCounterAdapter extends Activity with TypedActivity with ModelMediator
     setState(behavior.get.min)
   }
 
-  override protected def onStart() {
+  override protected[android] def onStart() {
     super.onStart()
     Log.i(TAG, "onStart")
     updateView()
