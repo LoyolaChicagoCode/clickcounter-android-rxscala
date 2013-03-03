@@ -54,6 +54,8 @@ object AndroidEclipseDefaults {
     manifestPath in Android <<=
       (baseDirectory, manifestName in Android) map ((b,m) => Seq(b / m)) map (x=>x),
 
+    unmanagedSourceDirectories in Compile <++= baseDirectory { base => Seq(base / "gen") },
+
     // 
     preTasks := Seq(generateTypedResources in Android)
   )
