@@ -4,7 +4,12 @@ package model
 /**
  * An purely functional, stateless implementation of a bounded counter.
  */
-class StatelessBoundedCounter(_min: Int = 0, _max: Int = 10) extends Counter {
+class StatelessBoundedCounter(_min: Int, _max: Int) extends Counter {
+
+  // Reflection in conjunction with default argument value is very messy.
+  // This explicit default constructor makes it very easy to create
+  // new instances through reflection.
+  def this() = this(0, 10)
 
   require { _min < _max }
 

@@ -19,7 +19,6 @@ import model._
  */
 class ClickCounterAdapter extends Activity with TypedActivity with ModelMediator[Int, Counter] with DefaultOrElseValues {
 
-  // TODO testing
   // TODO slider and additional textview for max counter value
   // TODO enable assertions
 
@@ -31,9 +30,8 @@ class ClickCounterAdapter extends Activity with TypedActivity with ModelMediator
     // inject the (implicit) dependency on the view
     setContentView(R.layout.main)
     // inject the dependency on the model
-    // FIXME
-    // setModel(createBehaviorFromClassName())
-    setBehavior(new StatelessBoundedCounter())
+    setBehavior(createBehaviorFromClassName())
+    // set the initial state to the counter's min value
     setState(behavior.get.min)
   }
 
@@ -47,14 +45,12 @@ class ClickCounterAdapter extends Activity with TypedActivity with ModelMediator
    * Creates a model instance from the class name provided as the string value
    * of the external model_class resource.
    */
-//  protected def createBehaviorFromClassName(): Counter = {
-//    // for flexibility, instantiate model based on externally configured
-//    // class name
-//    // FIXME newInstance fails
-//    Class
-//      .forName(getResources().getString(R.string.model_class))
-//      .asSubclass(classOf[Counter]).newInstance()
-//  }
+  protected def createBehaviorFromClassName(): Counter = {
+    // for flexibility, instantiate model based on externally configured class name
+    Class.
+      forName(getResources().getString(R.string.model_class)).
+      asSubclass(classOf[Counter]).newInstance
+  }
 
   /**
    * Handles the semantic increment event. (Semantic as opposed to, say, a

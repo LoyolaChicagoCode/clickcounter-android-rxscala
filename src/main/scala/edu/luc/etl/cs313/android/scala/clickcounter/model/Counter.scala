@@ -2,7 +2,7 @@ package edu.luc.etl.cs313.android.scala.clickcounter
 package model
 
 /**
- * An immutable counter abstraction.
+ * An immutable bounded counter abstraction.
  *
  * @author laufer
  */
