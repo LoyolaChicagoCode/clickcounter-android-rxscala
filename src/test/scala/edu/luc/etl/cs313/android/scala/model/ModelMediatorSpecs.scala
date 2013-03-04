@@ -1,8 +1,12 @@
 package edu.luc.etl.cs313.android.scala.model
 
+import scala.language.reflectiveCalls
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FunSpec
 
+/**
+ * A unit test for the model mediator. Run in sbt or Eclipse.
+ */
 class ModelMediatorSpecs extends FunSpec with ShouldMatchers {
 
   def fixture() = new {

@@ -4,6 +4,7 @@ package tests
 import junit.framework.Assert._
 import _root_.android.test.AndroidTestCase
 import _root_.android.test.ActivityInstrumentationTestCase2
+import _root_.android.test.UiThreadTest
 
 /**
  * Concrete Android test subclass. Has to inherit from framework class
@@ -17,13 +18,20 @@ import _root_.android.test.ActivityInstrumentationTestCase2
 class ClickCounterActivityInstrumentationTest
   extends ActivityInstrumentationTestCase2(classOf[ClickCounterAdapter]) {
 
-  // TODO add forwarding methods to abstract test
   // TODO fix so it can run in sbt (JUnit4 missing?)
 
-  def testActivityExists() {
-    val activity = getActivity
-    assertNotNull(activity)
-    val t = activity.findView(TR.textview_value)
-    assertEquals(0, t.getText.toString.toInt)
+  private val actualTest = new AbstractClickCounterFunctionalTest {
+    override protected def activity() =
+      ClickCounterActivityInstrumentationTest.this.getActivity
   }
+
+  def testActivityExists() = actualTest.testActivityExists()
+
+  def testActivityInitialValue() = actualTest.testActivityInitialValue()
+
+  @UiThreadTest
+  def testActivityScenarioIncReset() = actualTest.testActivityScenarioIncReset()
+
+  @UiThreadTest
+  def testActivityScenarioIncUntilFull() = actualTest.testActivityScenarioIncUntilFull()
 }

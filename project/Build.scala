@@ -37,8 +37,9 @@ object General {
     AndroidMarketPublish.settings ++ Seq (
       keyalias in Android := "change-me",
       libraryDependencies ++= Seq(
-        "org.robolectric" % "robolectric" % "2.0-alpha-1",
         "junit" % "junit" % "4.11",
+        "org.mockito" % "mockito-core" % "1.9.5",
+        "org.robolectric" % "robolectric" % "2.0-alpha-1",
         "com.novocode" % "junit-interface" % "0.10-M2" % "test",
         "org.scalatest" % "scalatest_2.10.0-RC3" % "2.0.M5-B1" % "test"
       )

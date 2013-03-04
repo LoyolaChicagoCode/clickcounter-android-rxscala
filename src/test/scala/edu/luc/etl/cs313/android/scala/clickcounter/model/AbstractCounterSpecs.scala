@@ -3,6 +3,10 @@ package edu.luc.etl.cs313.android.scala.clickcounter.model
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FunSpec
 
+/**
+ * An abstract unit test for the bounded counter moidel.
+ * This follows the XUnit Testcase Superclass pattern.
+ */
 trait AbstractCounterSpecs extends FunSpec with ShouldMatchers {
 
   val fixture: Counter

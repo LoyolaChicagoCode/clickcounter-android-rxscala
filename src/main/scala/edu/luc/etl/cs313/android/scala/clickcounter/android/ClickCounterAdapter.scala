@@ -4,27 +4,20 @@ package android
 import _root_.android.app.Activity
 import _root_.android.os.Bundle
 import _root_.android.util.Log
-import _root_.android.view.Menu
-import _root_.android.view.View
-import _root_.android.widget.Button
-import _root_.android.widget.TextView
-import scala.language.postfixOps
-import edu.luc.etl.cs313.android.scala.model._
-import model._
+import model.Counter
 
 /**
- * The Adapter in the Model-View-Adapter pattern. It connects the
+ * The concrete Adapter in the Model-View-Adapter pattern. It connects the
  * Android GUI view with the model, consisting of behavior and state,
- * by mapping semantic events to state transformations.
+ * by mixing the abstract Adapter in with the Android activity and its
+ * lifecycle methods.
  */
-class ClickCounterAdapter extends Activity with TypedActivity with ModelMediator[Int, Counter] with DefaultOrElseValues {
-
-  // TODO slider and additional textview for max counter value
-  // TODO enable assertions
+class ClickCounterAdapter extends Activity with TypedActivity
+  with AbstractClickCounterAdapter {
 
   private def TAG = "clickcounter-android-activity"
 
-  override protected[android] def onCreate(savedInstanceState: Bundle) {
+  override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
     Log.i(TAG, "onCreate")
     // inject the (implicit) dependency on the view
@@ -35,7 +28,7 @@ class ClickCounterAdapter extends Activity with TypedActivity with ModelMediator
     setState(behavior.get.min)
   }
 
-  override protected[android] def onStart() {
+  override def onStart() {
     super.onStart()
     Log.i(TAG, "onStart")
     updateView()
@@ -53,28 +46,10 @@ class ClickCounterAdapter extends Activity with TypedActivity with ModelMediator
   }
 
   /**
-   * Handles the semantic increment event. (Semantic as opposed to, say, a
-   * concrete button press.) This and similar events are connected to the
-   * corresponding onClick events (actual button presses) in the view itself,
-   * usually with the help of the graphical layout editor; the connection also
-   * shows up in the XML source of the view layout.
+   * Updates the concrete view from the model.
    */
-  def onIncrement(view: View) { transform { behavior.get.increment } }
-
-  /**
-   * Handles the semantic decrement event.
-   */
-  def onDecrement(view: View) { transform { behavior.get.decrement } }
-
-  /**
-   * Handles the semantic decrement event.
-   */
-  def onReset(view: View) { transform { behavior.get.reset } }
-
-  /**
-   * Updates the view from the model. Implicit so `transform` picks it up.
-   */
-  protected implicit def updateView() {
+  override protected def updateView() {
+    import scala.language.postfixOps
     // update display
     findView(TR.textview_value).setText(access { identity } toString)
     // afford controls according to model state

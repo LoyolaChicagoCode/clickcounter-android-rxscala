@@ -6,7 +6,8 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
 /**
- * Concrete Robolectric test subclass.
+ * Concrete Robolectric test subclass. Run this test in Eclipse. It will
+ * not work in sbt.
  *
  * @author laufer
  * @see http://pivotal.github.com/robolectric
@@ -18,8 +19,7 @@ class ClickCounterRobolectric extends AbstractClickCounterFunctionalTest {
 
   private var _activity: Option[ClickCounterAdapter] = None
 
-  @Before
-  def setUp() {
+  @Before def setUp() {
     _activity = Some(new ClickCounterAdapter)
     activity.onCreate(null)
     activity.onStart()

@@ -34,7 +34,7 @@ trait ModelMediator[S, B] {
   protected def access[T](accessor: S => T)(implicit orElse: T): T =
     state map accessor getOrElse orElse
 
-  protected def setBehavior(behavior: B) { this.behavior = Some(behavior) }
+  protected[android] def setBehavior(behavior: B) { this.behavior = Some(behavior) }
 
-  protected def setState(state: S) { this.state = Some(state) }
+  protected[android] def setState(state: S) { this.state = Some(state) }
 }

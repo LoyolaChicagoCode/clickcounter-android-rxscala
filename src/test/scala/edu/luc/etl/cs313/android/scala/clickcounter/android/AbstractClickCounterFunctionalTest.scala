@@ -4,8 +4,15 @@ package android
 import junit.framework.Assert._
 import org.junit.Test
 
+/**
+ * An abstract GUI-based functional test for the clickcounter app.
+ * This follows the XUnit Testcase Superclass pattern.
+ */
 abstract class AbstractClickCounterFunctionalTest {
 
+  /**
+   * The activity to be provided by concrete subclasses of this test.
+   */
   protected def activity(): ClickCounterAdapter
 
   @Test def testActivityExists() {
