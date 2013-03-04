@@ -5,7 +5,8 @@ import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FunSpec
 
 /**
- * A unit test for the model mediator. Run in sbt or Eclipse.
+ * A unit test for the model mediator.
+ * Run in sbt or Eclipse as a ScalaTest.
  */
 class ModelMediatorSpecs extends FunSpec with ShouldMatchers {
 

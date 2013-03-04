@@ -6,17 +6,15 @@ import org.mockito.Mockito._
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FunSpec
 import org.scalatest.mock.MockitoSugar
-import model.Counter
+import model.BoundedCounter
 import org.mockito.InOrder
 
 /**
- * A unit test of AbstractClickCounterAdapter that uses mocking to
- * satisfy the dependencies (collaborators).
- *
- * Run this test in sbt as follows:
- * > test-only edu.luc.etl.cs313.android.scala.clickcounter.android.ClickCounterAdapterSpecs
+ * A unit test of AbstractAdapter that uses mocking to satisfy the dependencies
+ * (collaborators).
+ * Run in sbt as or in Eclipse as a ScalaTest.
  */
-class ClickCounterAdapterSpecs extends FunSpec with ShouldMatchers with MockitoSugar {
+class AdapterSpecs extends FunSpec with ShouldMatchers with MockitoSugar {
 
   /**
    * Trait for mock views.
@@ -32,14 +30,14 @@ class ClickCounterAdapterSpecs extends FunSpec with ShouldMatchers with MockitoS
     // create mock instances of the collaborators
     val min = 0
     val max = 10
-    val model = mock[Counter]
+    val model = mock[BoundedCounter]
     val view = mock[View]
     val order = inOrder(model, view)
     // stub certain methods
     when(model.min).thenReturn(min)
     when(model.max).thenReturn(max)
     // create subject-under-test (SUT)
-    val adapter = new AbstractClickCounterAdapter {
+    val adapter = new AbstractAdapter {
       override def updateView() {
         view.update() // hard-coded dependency
       }
@@ -47,8 +45,8 @@ class ClickCounterAdapterSpecs extends FunSpec with ShouldMatchers with MockitoS
     adapter.setBehavior(model) // injected dependency
   }
 
-  describe("A clickcounter adapter") {
-    it("handles onIncrement") {
+  describe("A clickcounter adapter") ({
+    it("handles onIncrement") ({
       // create and import fixture
       val f = fixture()
       import f._
@@ -58,8 +56,8 @@ class ClickCounterAdapterSpecs extends FunSpec with ShouldMatchers with MockitoS
       // verify interaction with collaborators
       order.verify(model).increment(min)
       order.verify(view).update()
-    }
-    it("handles onDecrement") {
+    })
+    it("handles onDecrement") ({
       // create and import fixture
       val f = fixture()
       import f._
@@ -69,17 +67,17 @@ class ClickCounterAdapterSpecs extends FunSpec with ShouldMatchers with MockitoS
       // verify interaction with collaborators
       order.verify(model).decrement(max)
       order.verify(view).update()
-    }
-    it("handles onReset") {
+    })
+    it("handles onReset") ({
       // create and import fixture
       val f = fixture()
       import f._
-      // exercise subject-under-test
+      // exercise SUT
       adapter.setState(max)
       adapter.onReset(null)
       // verify interaction with collaborators
       order.verify(model).reset(max)
       order.verify(view).update()
-    }
-  }
+    })
+  })
 }

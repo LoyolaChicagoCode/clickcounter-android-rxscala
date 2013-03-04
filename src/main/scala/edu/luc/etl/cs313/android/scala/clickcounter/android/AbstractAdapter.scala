@@ -7,11 +7,11 @@ import model._
 
 /**
  * An abstract Adapter in the Model-View-Adapter pattern. It maps semantic
- * events to state transformations. To enable unit testing, this has no
- * class-level dependencies on Android and leaves the updateView method
- * abstract.
+ * events to state transformations in the model. To enable unit testing,
+ * this has no class-level dependencies on Android and leaves the updateView
+ * method abstract.
  */
-trait AbstractClickCounterAdapter extends ModelMediator[Int, Counter] with DefaultOrElseValues {
+trait AbstractAdapter extends ModelMediator[Int, BoundedCounter] with DefaultOrElseValues {
 
   /**
    * Handles the semantic increment event. (Semantic as opposed to, say, a

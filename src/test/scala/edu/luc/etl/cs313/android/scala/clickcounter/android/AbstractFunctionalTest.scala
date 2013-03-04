@@ -8,12 +8,12 @@ import org.junit.Test
  * An abstract GUI-based functional test for the clickcounter app.
  * This follows the XUnit Testcase Superclass pattern.
  */
-abstract class AbstractClickCounterFunctionalTest {
+abstract class AbstractFunctionalTest {
 
   /**
    * The activity to be provided by concrete subclasses of this test.
    */
-  protected def activity(): ClickCounterAdapter
+  protected def activity(): MainActivity
 
   @Test def testActivityExists() {
     assertNotNull(activity)

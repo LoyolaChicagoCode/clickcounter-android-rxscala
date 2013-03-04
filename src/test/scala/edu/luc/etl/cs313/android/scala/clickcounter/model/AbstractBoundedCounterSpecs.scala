@@ -7,9 +7,9 @@ import org.scalatest.FunSpec
  * An abstract unit test for the bounded counter moidel.
  * This follows the XUnit Testcase Superclass pattern.
  */
-trait AbstractCounterSpecs extends FunSpec with ShouldMatchers {
+trait AbstractBoundedCounterSpecs extends FunSpec with ShouldMatchers {
 
-  val fixture: Counter
+  val fixture: BoundedCounter
 
   describe("A counter") {
     it("has at least two values") {
