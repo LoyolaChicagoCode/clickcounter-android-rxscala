@@ -15,14 +15,14 @@ import _root_.android.test.UiThreadTest
  * @author laufer
  * @see http://developer.android.com/tools/testing/activity_testing.html
  */
-class ClickCounterActivityInstrumentationTest
-  extends ActivityInstrumentationTestCase2(classOf[ClickCounterAdapter]) {
+class AndroidFunctionalTest 
+  extends ActivityInstrumentationTestCase2(classOf[MainActivity]) {
 
   // TODO fix so it can run in sbt (JUnit4 missing?)
 
-//  private val actualTest = new AbstractClickCounterFunctionalTest {
+//  private val actualTest = new AbstractFunctionalTest {
 //    override protected def activity() =
-//      ClickCounterActivityInstrumentationTest.this.getActivity
+//      AndroidFunctionalTest.this.getActivity
 //  }
 //
 //  def testActivityExists() = actualTest.testActivityExists()
