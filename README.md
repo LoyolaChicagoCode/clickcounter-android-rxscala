@@ -24,8 +24,8 @@ _Anticipated FAQs are included below._
 
 - Java Development Kit (JDK) 6 through your package management system or from
   [Oracle](http://www.oracle.com/technetwork/java/javase/downloads).
-  ([ProGuard](http://proguard.sourceforge.net/), used for deploying Scala
-  apps, does not yet support Java 7!)
+  ([ProGuard](http://proguard.sourceforge.net/), highly useful for deploying Scala
+  Android apps, does not yet support Java 7!)
 - [sbt](http://www.scala-sbt.org/)
 - [Android SDK](http://developer.android.com/sdk)
 
