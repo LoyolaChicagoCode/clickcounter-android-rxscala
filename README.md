@@ -76,7 +76,7 @@ and check again.
 
     $ sbt test
 
-## Running the sample application
+## Running the application
 
     $ sbt android:package-debug
     $ sbt android:start-emulator
@@ -94,6 +94,9 @@ with it.
 
 - File > Import > General > Existing Projects into Workspace
 
+If you see a popup referring to a rebuild error, it is harmless, and you can
+dismiss it.
+
 ## Running the unit tests
 
 - Expand project root > eclipse
@@ -101,7 +104,7 @@ with it.
 
 You will see console output as well as a test runner GUI for ScalaTest.
 
-## Running the sample application
+## Running the application
 
 - Right-click project root > Run As > Android Application
 
@@ -130,6 +133,32 @@ Now you should be able to run the functional tests like this:
 - Right-click robolectric.launch > Run As > robolectric
 
 These should run (and pass) in the standard JUnit test runner.
+
+# Adding dependencies
+
+To add a dependency, you can usually
+
+- look it up by name in [MVNrepository](http://mvnrepository.com/)
+- find the desired version
+- select the sbt tab
+- copy the portion _after_ `libraryDependencies +=`
+- paste it into this section of project/Build.scala (followed by a comma)
+
+    libraryDependencies ++= Seq(
+
+If you are using Eclipse, you will also need to
+
+- rerun
+
+    $ sbt eclipse
+
+- File > Refresh
+
+- redo the preparation for running the functional tests
+
+# Anticipated FAQs
+
+
 
 # Acknowledgments
 
