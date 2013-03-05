@@ -4,17 +4,17 @@ This example is intended as a starting point for anyone planning develop
 Android applications using Scala. Its learning objectives are:
 
 - Android application development using Scala
-  - using the Simple Build Tool (sbt) for Scala
-  - using Eclipse
+    - using the Simple Build Tool (sbt) for Scala
+    - using Eclipse
 - Android application architecture for testability
-  - [Dependency Inversion Principle (DIP)](http://en.wikipedia.org/wiki/Dependency_inversion_principle)
-  - [Model-View-Adapter](http://en.wikipedia.org/wiki/Model-view-adapter) architectural pattern
-  - Separation of Android activity into event-handling and lifecycle management
+    - [Dependency Inversion Principle (DIP)](http://en.wikipedia.org/wiki/Dependency_inversion_principle)
+    - [Model-View-Adapter](http://en.wikipedia.org/wiki/Model-view-adapter) architectural pattern
+    - Separation of Android activity into event-handling and lifecycle management
 - Effective testing
-  - Unit testing with ScalaTest
-  - [Behavior-Driven Development (BDD)](http://en.wikipedia.org/wiki/Behavior-driven_development) with ScalaTest
-  - [Mock objects](http://en.wikipedia.org/wiki/Mock_object) with [Mockito](http://mockito.org/)
-  - Functional testing (out-of-container) using [Robolectric](http://pivotal.github.com/robolectric/)
+    - Unit testing with ScalaTest
+    - [Behavior-Driven Development (BDD)](http://en.wikipedia.org/wiki/Behavior-driven_development) with ScalaTest
+    - [Mock objects](http://en.wikipedia.org/wiki/Mock_object) with [Mockito](http://mockito.org/)
+    - Functional testing (out-of-container) using [Robolectric](http://pivotal.github.com/robolectric/)
 
 # Prerequisites
 
@@ -49,10 +49,12 @@ Android applications using Scala. Its learning objectives are:
 
 To start the emulator:
 
-    $ sbt android:emulator-start YourAVD
+    $ emulator -avd YourAVD &
 
 It will take the emulator a couple of minutes to boot to your AVD's home or
-lock scren.
+lock scren. If you set up hardware acceleration correctly, you will see
+
+    HAX is working and emulator runs in fast virt mode
 
 To verify that you have a connection with the emulator:
 
