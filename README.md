@@ -197,6 +197,16 @@ Android SDK installation folder:
 
     android-sdks/add-ons/addon-google_apis-google-17/libs/maps.jar
 
+## Why didn't you cover in-container functional testing?
+
+Francois-Xavier Thomas's
+[giter8 template](github.com/fxthomas/android-app.g8) does generate
+a sample in-container functional test based on
+[ActivityInstrumentationTestCase2](http://developer.android.com/reference/android/test/ActivityInstrumentationTestCase2.html),
+but this stopped working for me once my activity became more complex (by mixing
+in traits etc.). I have given up on this type of testing for now and have been
+testing with Robolectric as an alternative.
+
 # Acknowledgments
 
 This example is based on Francois-Xavier Thomas's
