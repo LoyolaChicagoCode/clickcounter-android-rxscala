@@ -150,7 +150,7 @@ If you are using Eclipse, you will also need to
 
 - rerun
 
-    $ sbt eclipse
+        $ sbt eclipse
 
 - File > Refresh
 
@@ -158,7 +158,44 @@ If you are using Eclipse, you will also need to
 
 # Anticipated FAQs
 
+## What if sbt reports this error?
 
+    [error] /Users/laufer/Work/Eclipse/workspace-cs313/clickcounter-android-scala/target/scala-2.10/src_managed/main/java/edu/luc/etl/cs313/android/scala/clickcounter/android/R.java:10: R is already defined as object R
+    [error] public final class R {
+    [error]                    ^
+
+Simply
+
+    $ rm -rf gen
+
+and try again.
+
+## What if there are unexpected errors in Eclipse?
+
+Try a combination of the following steps:
+
+- File > Refresh
+- Project > Clean
+- Recreate the generated sources:
+
+    $ sbt generate-typed-resources
+
+If nothing helps, rerun
+
+    $ sbt eclipse
+
+followed by the usual steps.
+
+## What if I get these warnings?
+
+    Warning: an error occurred while binding shadow class: ShadowGeoPoint
+
+These warnings are harmless, but if you are developing location-based apps,
+then you will need to add the corresponding `maps.jar` to the build path as an
+external jar. For example, for API level 17, you would find this below your
+Android SDK installation folder:
+
+    android-sdks/add-ons/addon-google_apis-google-17/libs/maps.jar
 
 # Acknowledgments
 
