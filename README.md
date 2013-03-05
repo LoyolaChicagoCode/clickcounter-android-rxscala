@@ -197,7 +197,7 @@ Android SDK installation folder:
 
     android-sdks/add-ons/addon-google_apis-google-17/libs/maps.jar
 
-## Why didn't you cover in-container functional testing?
+## Why don't you cover in-container functional testing?
 
 Francois-Xavier Thomas's
 [giter8 template](github.com/fxthomas/android-app.g8) does generate
