@@ -16,7 +16,7 @@ Android applications using Scala. Its learning objectives are:
     - [Mock objects](http://en.wikipedia.org/wiki/Mock_object) with [Mockito](http://mockito.org/)
     - Functional testing (out-of-container) using [Robolectric](http://pivotal.github.com/robolectric/)
 
-Anticipated FAQs are included below.
+_Anticipated FAQs are included below._
 
 # Prerequisites
 
