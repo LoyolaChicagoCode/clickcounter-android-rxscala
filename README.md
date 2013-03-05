@@ -209,6 +209,12 @@ but this stopped working for me once my activity became more complex (by mixing
 in traits etc.). I have given up on this type of testing for now and have been
 testing with Robolectric as an alternative.
 
+## Why don't you provide a giter8 template?
+
+Because this work is preliminary and I want it to stabilize before turning
+it into a template. And there are some manual steps that still need to be
+automated.
+
 # Acknowledgments
 
 This example is based on Francois-Xavier Thomas's
