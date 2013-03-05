@@ -178,7 +178,7 @@ Try a combination of the following steps:
 - Project > Clean
 - Recreate the generated sources:
 
-    $ sbt generate-typed-resources
+        $ sbt generate-typed-resources
 
 If nothing helps, rerun
 
