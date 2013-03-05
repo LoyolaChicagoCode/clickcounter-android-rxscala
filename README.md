@@ -186,8 +186,7 @@ If nothing helps, rerun
 
 followed by the usual steps.
 
-## What if I get warnings referring to `ShadowGeoPoint` or similar during
-the Robolectric tests?
+## What if I get warnings referring to `ShadowGeoPoint` or similar during the Robolectric tests?
 
     Warning: an error occurred while binding shadow class: ShadowGeoPoint
 
