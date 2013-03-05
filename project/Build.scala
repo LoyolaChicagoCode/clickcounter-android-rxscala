@@ -11,6 +11,7 @@ object General {
     version := "0.1",
     versionCode := 0,
     scalaVersion := "2.10.1-RC2",
+    scalacOptions := Seq("-language:implicitConversions", "-feature", "-unchecked", "-deprecation", "-encoding", "utf8"),
     platformName in Android := "android-17",
     parallelExecution in Test := false
   )
@@ -52,15 +53,4 @@ object AndroidBuild extends Build {
     file("."),
     settings = General.fullAndroidSettings ++ AndroidEclipseDefaults.settings
   )
-
-  lazy val tests = Project (
-    "tests",
-    file("tests"),
-    settings = General.settings ++
-               AndroidEclipseDefaults.settings ++
-               AndroidTest.androidSettings ++
-               General.proguardSettings ++ Seq (
-      name := "clickcounter-android-scalaTests"
-    )
-  ) dependsOn main
 }

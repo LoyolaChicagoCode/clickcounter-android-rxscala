@@ -1,18 +1,19 @@
 package edu.luc.etl.cs313.android.scala.clickcounter
 package android
 
-import org.junit.Before
+import org.junit.{Before,Ignore}
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import org.junit.Ignore
 
 /**
- * Concrete Robolectric test subclass. Run this test in Eclipse. It will
- * not work in sbt.
+ * Concrete Robolectric test subclass. This test will not work in sbt.
+ * Before you can run it in Eclipse as an ordinary JUnit test, you should
+ * perform the steps outlined in the documentation.
  *
  * @author laufer
  * @see http://pivotal.github.com/robolectric
  */
+@Ignore
 @RunWith(classOf[RobolectricTestRunner])
 class RobolectricFunctionalTest extends AbstractFunctionalTest {
 
