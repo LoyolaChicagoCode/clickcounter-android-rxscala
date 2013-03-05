@@ -29,7 +29,7 @@ _Anticipated FAQs are included below._
 - [sbt](http://www.scala-sbt.org/)
 - [Android SDK](http://developer.android.com/sdk)
 
-## Optional
+## Recommended
 
 - [Eclipse 4.2.x IDE for Java Developers](http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/junosr1)
 - [Android ADT plugin](http://developer.android.com/tools/sdk/eclipse-adt.html)
