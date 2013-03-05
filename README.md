@@ -42,8 +42,13 @@ _Anticipated FAQs are included below._
 - Create an Android Virtual Device (AVD) per
   [these instructions](http://developer.android.com/tools/devices). This
   device should support API level 17 (Android 4.2) and have an x86 CPU.
+- If you have an Android device and wish to use it for development,
+   you can follow
+   [these instructions](http://developer.android.com/tools/device.html)
+   to enable it.
 - Check out this project using Mercurial (hg) or download
   [this zip file](https://bitbucket.org/loyolachicagocs_plsystems/clickcounter-android-scala/get/default.zip).
+
 
 # Developing on the Command-line
 
