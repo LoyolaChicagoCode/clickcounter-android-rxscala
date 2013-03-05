@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.junit.launchconfig">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/clickcounter-android-scala-robolectric/src/main/scala/edu/luc/etl/cs313/android/scala/clickcounter/android/RobolectricFunctionalTest.scala"/>
+<listEntry value="/clickcounter-android-scala/src/test/scala/edu/luc/etl/cs313/android/scala/clickcounter/android/RobolectricFunctionalTest.scala"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
@@ -14,6 +14,5 @@
 <stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
 <stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit4"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="edu.luc.etl.cs313.android.scala.clickcounter.android.RobolectricFunctionalTest"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="clickcounter-android-scala-robolectric"/>
-<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc:clickcounter-android-scala}"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="clickcounter-android-scala"/>
 </launchConfiguration>
