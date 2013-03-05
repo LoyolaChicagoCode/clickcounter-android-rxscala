@@ -158,7 +158,7 @@ If you are using Eclipse, you will also need to
 
 # Anticipated FAQs
 
-## What if sbt reports this error?
+## What if sbt reports the `R is already defined` error?
 
     [error] /Users/laufer/Work/Eclipse/workspace-cs313/clickcounter-android-scala/target/scala-2.10/src_managed/main/java/edu/luc/etl/cs313/android/scala/clickcounter/android/R.java:10: R is already defined as object R
     [error] public final class R {
@@ -186,7 +186,7 @@ If nothing helps, rerun
 
 followed by the usual steps.
 
-## What if I get these warnings?
+## What if I get warnings referring to `ShadowGeoPoint` or similar?
 
     Warning: an error occurred while binding shadow class: ShadowGeoPoint
 
