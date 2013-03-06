@@ -34,6 +34,7 @@ _Anticipated FAQs are included below._
 - [Eclipse 4.2.x IDE for Java Developers](http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/junosr1)
 - [Android ADT plugin](http://developer.android.com/tools/sdk/eclipse-adt.html)
 - [Scala IDE Eclipse plugin](http://scala-ide.org/download/milestone.html#scala_ide_21_milestone_3) corresponding to your Eclipse version
+- [AndroidProguardScala](https://github.com/banshee/AndroidProguardScala) Eclipse plugin for faster Android development
 
 # Preparation
 
@@ -208,7 +209,7 @@ Android SDK installation folder:
 ## Why don't you cover in-container functional testing?
 
 Francois-Xavier Thomas's
-[giter8 template](github.com/fxthomas/android-app.g8) does generate
+[giter8 template](http://github.com/fxthomas/android-app.g8) does generate
 a sample in-container functional test based on
 [ActivityInstrumentationTestCase2](http://developer.android.com/reference/android/test/ActivityInstrumentationTestCase2.html),
 but this stopped working for me once my activity became more complex (by mixing
@@ -221,8 +222,13 @@ Because this work is preliminary and I want it to stabilize before turning
 it into a template. And there are some manual steps that still need to be
 automated.
 
+## What if I want to start from scratch?
+
+Then you should consider using Francois-Xavier Thomas's
+[giter8 template](http://github.com/fxthomas/android-app.g8).
+
 # Acknowledgments
 
 This example is based on Francois-Xavier Thomas's
-[giter8 template](github.com/fxthomas/android-app.g8), which
+[giter8 template](http://github.com/fxthomas/android-app.g8), which
 builds on Jan Berkel's [sbt plugin](https://github.com/jberkel/android-plugin).
