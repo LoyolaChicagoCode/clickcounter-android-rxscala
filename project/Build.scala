@@ -39,6 +39,7 @@ object General {
       keyalias in Android := "change-me",
       libraryDependencies ++= Seq(
         "junit" % "junit" % "4.11",
+        "com.google.dexmaker" % "dexmaker" % "1.0",
         "org.mockito" % "mockito-core" % "1.9.5",
         "org.robolectric" % "robolectric" % "2.0-alpha-1",
         "com.novocode" % "junit-interface" % "0.10-M2" % "test",
