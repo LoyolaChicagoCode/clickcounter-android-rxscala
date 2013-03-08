@@ -10,6 +10,7 @@ Android applications using Scala. Its learning objectives are:
     - [Dependency Inversion Principle (DIP)](http://en.wikipedia.org/wiki/Dependency_inversion_principle)
     - [Model-View-Adapter](http://en.wikipedia.org/wiki/Model-view-adapter) architectural pattern
     - Separation of Android activity into event-handling and lifecycle management
+    - Separation of imperative GUI and functional model
 - Effective testing
     - Unit testing with ScalaTest
     - [Behavior-Driven Development (BDD)](http://en.wikipedia.org/wiki/Behavior-driven_development) with ScalaTest
