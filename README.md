@@ -206,8 +206,7 @@ Android SDK installation folder:
 
     android-sdks/add-ons/addon-google_apis-google-17/libs/maps.jar
 
-## Why does my app work when I run it through Eclipse but force-close when
-I run it through sbt?
+## Why does my app work when I run it through Eclipse but force-close when I run it through sbt?
 
 We are not sure but believe that the AndroidProguardScala plugin enables
 Eclipse to create a better apk (application package) than sbt on its own.
