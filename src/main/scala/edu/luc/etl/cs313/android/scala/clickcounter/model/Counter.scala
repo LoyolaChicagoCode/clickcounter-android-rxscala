@@ -17,9 +17,4 @@ trait Counter {
    * Decrements the counter value.
    */
   def decrement(value: Int): Option[Int]
-
-  /**
-   * Resets the counter value.
-   */
-  def reset(value: Int): Option[Int]
 }

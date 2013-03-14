@@ -13,6 +13,11 @@ trait BoundedCounter extends Counter {
   def max: Int
 
   /**
+   * Resets the counter value.
+   */
+  def reset(value: Int): Option[Int]
+
+  /**
    * Indicates whether the counter is full (at its maximum).
    */
   def isFull(value: Int): Boolean
