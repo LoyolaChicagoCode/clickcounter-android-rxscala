@@ -1,4 +1,3 @@
-# use glob syntax
 syntax: glob
 
 # built application files
@@ -13,21 +12,34 @@ syntax: glob
 
 # generated files
 bin/
+build/
 gen/
-libs/
-proguard_cache/
 target/
-tmp/
 
 # Local configuration file (sdk path, etc)
-build.xml
 local.properties
-proguard-project.txt
-.cache
-.classpath
-.project
-.settings/
 
 # Emacs files
 *~
 \#*\#
+
+# IDEA files
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse files
+.project
+.classpath
+.settings/
+
+# Gradle
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+
+# Junk
+.DS_Store

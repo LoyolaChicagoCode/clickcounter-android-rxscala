@@ -23,7 +23,8 @@ class MainActivity extends Activity with TypedActivity with AbstractAdapter {
     // inject the (implicit) dependency on the view
     setContentView(R.layout.main)
     // inject the dependency on the model
-    setBehavior(createBehaviorFromClassName())
+//    setBehavior(createBehaviorFromClassName()) // TODO fix this - currently excluded from apk
+    setBehavior(new model.StatelessBoundedCounter)
     // set the initial state to the counter's min value
     setState(behavior.get.min)
   }
