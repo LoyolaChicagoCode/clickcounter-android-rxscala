@@ -27,7 +27,8 @@ _Anticipated FAQs are included below._
   [Oracle](http://www.oracle.com/technetwork/java/javase/downloads).
 - [Android SDK](http://developer.android.com/sdk)
 - [sbt](http://www.scala-sbt.org/)
-- [SBT-Android plugin](http://fxthomas.github.io/android-plugin/)
+- [android-sdk-plugin](https://github.com/pfn/android-sdk-plugin) for sbt
+  (detailed instructions are half way down past the change log)
 
 ## Recommended
 
@@ -79,51 +80,53 @@ If this is not the case, restart the adb server
 
 and check again.
 
-## Running the unit tests
-
-    $ sbt test
-
 ## Running the application
 
 Once your emulator is running or device connected, you can run the app:
 
-    $ sbt start
+    $ sbt android:install
+    $ sbt android:run
 
 The app should now start in the emulator and you should be able to interact
 with it.
+
+**Everything past this point is work in progress**
+
+## Running the unit tests
+
+**TODO: UPDATE**
+
+    $ sbt test
 
 # Developing with IntelliJ IDEA
 
 **TODO**
 
-# Developing with Eclipse
-
 ## Generating the configuration files
 
-    $ sbt eclipse
+This step requires that you have the `sbt-idea` plugin installed per the
+instructions for pfn's plugin.
 
-## Import into Eclipse
+    $ sbt gen-idea
 
-- File > Import > General > Existing Projects into Workspace
+## Opening the project in IDEA
 
-If you see a popup referring to a rebuild error, it is harmless, and you can
-dismiss it.
+**TODO**
 
 ## Running the unit tests
 
-- Expand project root > eclipse
-- Right-click scalatest.launch > Run As > scalatest
-
-You will see console output as well as a test runner GUI for ScalaTest.
+**TODO**
 
 ## Running the application
 
-- Right-click project root > Run As > Android Application
+**TODO**
 
 The app should now start in the emulator and you should be able to interact
 with it.
 
 ## Running the functional tests
+
+**TODO: UPDATE**
 
 You will need to perform the following steps before you can run
 the Robolectric-based out-of-container functional tests:
@@ -158,11 +161,11 @@ To add a dependency, you can usually
 
     libraryDependencies ++= Seq(
 
-If you are using Eclipse, you will also need to
+If you are using IntelliJ IDEA, you will also need to
 
 - rerun
 
-        $ sbt eclipse
+        $ sbt gen-idea
 
 - File > Refresh
 
@@ -170,9 +173,11 @@ If you are using Eclipse, you will also need to
 
 # Anticipated FAQs
 
+**TODO: UPDATE**
+
 ## What if sbt reports the `R is already defined` error?
 
-    [error] /Users/laufer/Work/Eclipse/workspace-cs313/clickcounter-android-scala/target/scala-2.10/src_managed/main/java/edu/luc/etl/cs313/android/scala/clickcounter/android/R.java:10: R is already defined as object R
+    [error] /Users/laufer/Work/VersionControl/scalaworkshop/clickcounter-android-scala/target/scala-2.10/src_managed/main/java/edu/luc/etl/cs313/android/scala/clickcounter/android/R.java:10: R is already defined as object R
     [error] public final class R {
     [error]                    ^
 
@@ -182,7 +187,7 @@ Simply
 
 and try again.
 
-## What if there are unexpected errors in Eclipse?
+## What if there are unexpected errors in IDEA?
 
 Try a combination of the following steps:
 
@@ -232,11 +237,10 @@ automated.
 
 ## What if I want to start from scratch?
 
-Then you should consider using Francois-Xavier Thomas's
-[giter8 template](http://github.com/fxthomas/android-app.g8).
+**TODO**
 
 # Acknowledgments
 
-This example is based on Francois-Xavier Thomas's
+An earlier version of this example is based on Francois-Xavier Thomas's
 [giter8 template](http://github.com/fxthomas/android-app.g8), which
 builds on Jan Berkel's [sbt plugin](https://github.com/jberkel/android-plugin).
