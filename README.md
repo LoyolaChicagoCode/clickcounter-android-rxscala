@@ -25,17 +25,14 @@ _Anticipated FAQs are included below._
 
 - Java Development Kit (JDK) 6 through your package management system or from
   [Oracle](http://www.oracle.com/technetwork/java/javase/downloads).
-  ([ProGuard](http://proguard.sourceforge.net/), highly useful for deploying Scala
-  Android apps, does not yet support Java 7!)
-- [sbt](http://www.scala-sbt.org/)
 - [Android SDK](http://developer.android.com/sdk)
+- [sbt](http://www.scala-sbt.org/)
+- [SBT-Android plugin](http://fxthomas.github.io/android-plugin/)
 
 ## Recommended
 
-- [Eclipse 4.2.x IDE for Java Developers](http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/junosr1)
-- [Android ADT plugin](http://developer.android.com/tools/sdk/eclipse-adt.html)
-- [Scala IDE Eclipse plugin](http://scala-ide.org/download/milestone.html#scala_ide_21_milestone_3) corresponding to your Eclipse version
-- [AndroidProguardScala](https://github.com/banshee/AndroidProguardScala) Eclipse plugin for faster Android development
+- [JetBrains IntelliJ IDEA 13.1 EAP](http://confluence.jetbrains.com/display/IDEADEV/IDEA+13.1+EAP)
+- IDEA Scala plugin installed through the plugin manager
 
 # Preparation
 
@@ -88,11 +85,16 @@ and check again.
 
 ## Running the application
 
-    $ sbt android:package-debug
-    $ sbt android:start-emulator
+Once your emulator is running or device connected, you can run the app:
+
+    $ sbt start
 
 The app should now start in the emulator and you should be able to interact
 with it.
+
+# Developing with IntelliJ IDEA
+
+**TODO**
 
 # Developing with Eclipse
 
