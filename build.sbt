@@ -1,20 +1,14 @@
-// Include the Android plugin
-androidDefaults
+import android.Keys._
 
-// Name of your app
+android.Plugin.androidBuild
+
 name := "clickcounter-android-scala"
 
-// Version of your app
 version := "0.2.0"
 
-// Version number of your app
-versionCode := 0
+scalacOptions in Compile += "-feature"
 
-// Version of Scala
-scalaVersion := "2.10.3"
-
-// Version of the Android platform SDK
-platformName := "android-17"
+platformTarget in Android := "android-17"
 
 libraryDependencies ++= Seq(
   "com.novocode" % "junit-interface" % "0.10" % "test",

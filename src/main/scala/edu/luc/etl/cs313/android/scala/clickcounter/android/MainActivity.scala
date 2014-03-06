@@ -23,7 +23,7 @@ class MainActivity extends Activity with TypedActivity with AbstractAdapter {
     // inject the (implicit) dependency on the view
     setContentView(R.layout.main)
     // inject the dependency on the model
-//    setBehavior(createBehaviorFromClassName()) // TODO fix this - currently excluded from apk
+    //    setBehavior(createBehaviorFromClassName()) // TODO fix this - currently excluded from apk
     setBehavior(new model.StatelessBoundedCounter)
     // set the initial state to the counter's min value
     setState(behavior.get.min)
@@ -49,7 +49,7 @@ class MainActivity extends Activity with TypedActivity with AbstractAdapter {
   /**
    * Updates the concrete view from the model.
    */
-  override protected def updateView()  = {
+  override protected def updateView() = {
     import scala.language.postfixOps
     // update display
     findView(TR.textview_value).setText(access { identity } toString)
