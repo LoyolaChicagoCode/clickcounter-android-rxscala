@@ -6,7 +6,6 @@ import org.mockito.Mockito._
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FunSpec
 import org.scalatest.mock.MockitoSugar
-import model.BoundedCounter
 import org.mockito.InOrder
 
 /**
@@ -37,7 +36,7 @@ class AdapterSpecs extends FunSpec with ShouldMatchers with MockitoSugar {
     when(model.min).thenReturn(min)
     when(model.max).thenReturn(max)
     // create subject-under-test (SUT)
-    val adapter = new AbstractAdapter {
+    val adapter = new ObservableView {
       override def updateView() {
         view.update() // hard-coded dependency
       }

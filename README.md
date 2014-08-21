@@ -5,12 +5,12 @@ Android applications using Scala. Its learning objectives are:
 
 - Android application development using Scala
     - using the Simple Build Tool (sbt) for Scala
-    - using Eclipse
+    - using IntelliJ IDEA
 - Android application architecture for testability
     - [Dependency Inversion Principle (DIP)](http://en.wikipedia.org/wiki/Dependency_inversion_principle)
     - [Model-View-Adapter](http://en.wikipedia.org/wiki/Model-view-adapter) architectural pattern
     - Separation of Android activity into event-handling and lifecycle management
-    - Separation of imperative GUI and functional model
+    - Separation of stateful GUI and reactive model using [RxScala](http://rxscala.github.io)
 - Effective testing
     - Unit testing with ScalaTest
     - [Behavior-Driven Development (BDD)](http://en.wikipedia.org/wiki/Behavior-driven_development) with ScalaTest
