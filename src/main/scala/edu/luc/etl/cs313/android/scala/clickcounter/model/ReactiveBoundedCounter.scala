@@ -22,7 +22,7 @@ case object Full extends ModelState
 /**
  * A stateless, reactive bounded counter.
  */
-class ReactiveBoundedCounter(min: Int, max: Int) extends Observer[(Int, InputEvent)] {
+class ReactiveBoundedCounter(val min: Int, val max: Int) extends Observer[(Int, InputEvent)] {
 
   // Reflection in conjunction with default argument value is very messy.
   // This explicit default constructor makes it very easy to create

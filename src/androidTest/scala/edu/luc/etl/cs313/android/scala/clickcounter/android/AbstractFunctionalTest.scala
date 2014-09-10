@@ -8,7 +8,7 @@ import org.junit.Test
  * An abstract GUI-based functional test for the clickcounter app.
  * This follows the XUnit Testcase Superclass pattern.
  */
-abstract class AbstractFunctionalTest {
+trait AbstractFunctionalTest {
 
   /**
    * The activity to be provided by concrete subclasses of this test.
