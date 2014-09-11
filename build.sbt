@@ -4,8 +4,6 @@
 // Please see here for details:
 // https://github.com/pfn/android-sdk-plugin/blob/master/README.md
 
-// TODO support for out-of-container system testing using Robolectric or similar (look at https://gist.github.com/pfn/2503441)
-
 import android.Keys._
 
 android.Plugin.androidBuild
@@ -38,10 +36,14 @@ debugIncludesTests in Android := false
 
 exportJars in Test := false
 
-// Required so Proguard won't remove the actual instrumentation tests.
+// Supress warnings so that Proguard will do its job.
 proguardOptions in Android ++= Seq(
   "-dontwarn rx.internal.util.**",
-  "-dontwarn android.test.**",
+  "-dontwarn android.test.**"
+)
+
+// Required so Proguard won't remove the actual instrumentation tests.
+proguardOptions in Android ++= Seq(
   "-keep public class * extends junit.framework.TestCase",
   "-keepclassmembers class * extends junit.framework.TestCase { *; }"
 )
