@@ -12,7 +12,7 @@ name := "clickcounter-android-rxscala"
 
 version := "0.2.2"
 
-scalacOptions in Compile += "-feature"
+scalacOptions in Compile ++= Seq("-feature", "-unchecked", "-deprecation")
 
 platformTarget in Android := "android-19"
 
