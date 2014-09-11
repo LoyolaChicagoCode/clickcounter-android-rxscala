@@ -109,6 +109,9 @@ This command runs the unit tests and the Robolectric-based out-of-container
 functional tests.
 
     $ sbt test
+    
+*In-container Android instrumentation tests are included (sharing a testcase 
+superclass with the Robolectric tests) but not currently working.* 
 
 # Developing with IntelliJ IDEA
 
@@ -161,9 +164,3 @@ If you are using IntelliJ IDEA, you will also need to
 - back in IDEA, confirm that you want to reload the project
  
 - reconfirm the location of the Android manifest file
-
-# Acknowledgments
-
-An earlier version of this example is based on Francois-Xavier Thomas's
-[giter8 template](http://github.com/fxthomas/android-app.g8), which
-builds on Jan Berkel's [sbt plugin](https://github.com/jberkel/android-plugin).
