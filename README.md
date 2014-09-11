@@ -1,27 +1,22 @@
-# TODO
-
-Update readme to match this code example and in various other respects. 
-
 # Learning Objectives
 
 This example is intended as a starting point for anyone planning develop
-Android applications using Scala. Its learning objectives are:
+*reactive* Android applications using Scala. Its learning objectives are:
 
 - Android application development using Scala
-    - using the Simple Build Tool (sbt) for Scala
+    - using the Simple Build Tool (sbt) for Scala in conjunction with 
+      [pfn's well-maintained plugin](https://github.com/pfn/android-sdk-plugin)
     - using IntelliJ IDEA
-- Android application architecture for testability
+- Android application architecture for testability and maintainability
     - [Dependency Inversion Principle (DIP)](http://en.wikipedia.org/wiki/Dependency_inversion_principle)
     - [Model-View-Adapter](http://en.wikipedia.org/wiki/Model-view-adapter) architectural pattern
     - Separation of Android activity into event-handling and lifecycle management
-    - Separation of stateful GUI and reactive model using [RxScala](http://rxscala.github.io)
+    - Separation of stateful and reactive components using [RxScala](http://rxscala.github.io)
 - Effective testing
-    - Unit testing with ScalaTest
-    - [Behavior-Driven Development (BDD)](http://en.wikipedia.org/wiki/Behavior-driven_development) with ScalaTest
-    - [Mock objects](http://en.wikipedia.org/wiki/Mock_object) with [Mockito](http://mockito.org/)
+    - Unit testing and [Behavior-Driven Development (BDD)](http://en.wikipedia.org/wiki/Behavior-driven_development) 
+      with ScalaTest
+    - [Mock objects](http://en.wikipedia.org/wiki/Mock_object) with [ScalaMock](http://scalamock.org/)
     - Functional testing (out-of-container) using [Robolectric](http://pivotal.github.com/robolectric/)
-
-_Anticipated FAQs are included below._
 
 # Prerequisites
 
@@ -36,7 +31,7 @@ _Anticipated FAQs are included below._
 
 ## Recommended
 
-- [JetBrains IntelliJ IDEA 13.1 EAP](http://confluence.jetbrains.com/display/IDEADEV/IDEA+13.1+EAP)
+- [JetBrains IntelliJ IDEA 13.1 CE](http://www.jetbrains.com/idea)
 - IDEA Scala plugin installed through the plugin manager
 
 # Preparation
@@ -45,7 +40,7 @@ _Anticipated FAQs are included below._
   [these instructions](http://developer.android.com/tools/devices/emulator.html#accel-vm).
 - Create an Android Virtual Device (AVD) per
   [these instructions](http://developer.android.com/tools/devices). This
-  device should support API level 17 (Android 4.2) and have an x86
+  device should support API level 19 (Android 4.4.2) and have an x86
   CPU, a skin with hardware controls, and the option _hardware
   keyboard present_ checked.
 - If you have an Android device and wish to use it for development,
@@ -53,9 +48,12 @@ _Anticipated FAQs are included below._
    [these instructions](http://developer.android.com/tools/device.html)
    to enable it.
 - Check out this project using Mercurial (hg) or download
-  [this zip file](https://bitbucket.org/loyolachicagocs_plsystems/clickcounter-android-scala/get/default.zip).
+  [this zip file](https://bitbucket.org/loyolachicagocs_plsystems/clickcounter-android-rxscala/get/default.zip).
 
 # Developing on the Command-line
+
+These instructions assume that `$ANDROID_HOME/tools` and 
+`$ANDROID_HOME/platform-tools` are in the `$PATH`.      
 
 ## Starting the emulator
 
@@ -64,7 +62,7 @@ To start the emulator:
     $ emulator -avd YourAVD &
 
 It will take the emulator a couple of minutes to boot to your AVD's home or
-lock scren. If you set up hardware acceleration correctly, you will see
+lock screen. If you set up hardware acceleration correctly, you will see
 
     HAX is working and emulator runs in fast virt mode
 
@@ -84,27 +82,35 @@ If this is not the case, restart the adb server
 
 and check again.
 
+## Specifying the location of the Android SDK
+
+You can either
+
+- set `$ANDROID_HOME` to the directory where you installed your 
+  Android SDK
+
+- create a file `local.properties` in your project root 
+  (or copy an existing one) with a single line
+  
+        sdk.dir=/location/of/android/sdk
+
 ## Running the application
 
 Once your emulator is running or device connected, you can run the app:
 
-    $ sbt android:install
     $ sbt android:run
 
 The app should now start in the emulator and you should be able to interact
 with it.
 
-**Everything past this point is work in progress**
+## Running the tests
 
-## Running the unit tests
-
-**TODO: UPDATE**
+This command runs the unit tests and the Robolectric-based out-of-container
+functional tests.
 
     $ sbt test
 
 # Developing with IntelliJ IDEA
-
-**TODO**
 
 ## Generating the configuration files
 
@@ -112,58 +118,39 @@ This step requires that you have the `sbt-idea` plugin installed per the
 instructions for pfn's plugin.
 
     $ sbt gen-idea
+    
+You will have to repeat this step after every change to the `build.sbt` file 
+(see also under "adding dependencies" below.
 
 ## Opening the project in IDEA
 
-**TODO**
+Open *(not import)* the project through the initial dialog or `File > Open`.
+You should now be able to edit the project with proper syntax-directed
+editing and code completion.
 
-## Running the unit tests
+Right after opening the project, you may be asked to confirm the location of
+the Android manifest file.
 
-**TODO**
+## Running the tests and the application
 
-## Running the application
-
-**TODO**
-
-The app should now start in the emulator and you should be able to interact
-with it.
-
-## Running the functional tests
-
-**TODO: UPDATE**
-
-You will need to perform the following steps before you can run
-the Robolectric-based out-of-container functional tests:
-
-- Run this command in the project root directory to create `local.properties`
-  so Robolectric can find the Android SDK. You don't need to worry about the
-  two other generated files.
-
-        $ android update project -p .
-
-- Back in Eclipse, right-click project root > Build Path > Configure Build Path >
-  Order and Export, select android.jar, press Bottom, and then OK.
-
-- Remove the `@Ignore` annotation from the test itself.
-
-Now you should be able to run the functional tests like this:
-
-- Navigate to project root > eclipse
-- Right-click robolectric.launch > Run As > robolectric
-
-These should run (and pass) in the standard JUnit test runner.
+Some aspects of generated IDEA Android/Scala project do not work out of the box.
+We have found it easier to open a terminal within IDEA using 
+`View > Tool Windows > Terminal` and running `sbt test` or `sbt android:run`
+as desired. In the latter case, the app should start in the emulator and 
+you should be able to interact with it.
 
 # Adding dependencies
 
 To add a dependency, you can usually
 
-- look it up by name in [MVNrepository](http://mvnrepository.com/)
-- find the desired version
+- look it up by name in the [Central Repository](http://search.maven.org) 
+  or [MVNrepository](http://mvnrepository.com/)
+- find the desired version (usually the latest released or stable version)
 - select the sbt tab
 - copy the portion _after_ `libraryDependencies +=`
-- paste it into this section of project/Build.scala (followed by a comma)
+- paste it into this section of `build.sbt` (followed by a comma)
 
-    libraryDependencies ++= Seq(
+        libraryDependencies ++= Seq(
 
 If you are using IntelliJ IDEA, you will also need to
 
@@ -171,77 +158,9 @@ If you are using IntelliJ IDEA, you will also need to
 
         $ sbt gen-idea
 
-- File > Refresh
-
-- redo the preparation for running the functional tests
-
-# Anticipated FAQs
-
-**TODO: UPDATE**
-
-## What if sbt reports the `R is already defined` error?
-
-    [error] /Users/laufer/Work/VersionControl/scalaworkshop/clickcounter-android-scala/target/scala-2.10/src_managed/main/java/edu/luc/etl/cs313/android/scala/clickcounter/android/R.java:10: R is already defined as object R
-    [error] public final class R {
-    [error]                    ^
-
-Simply
-
-    $ rm -rf gen
-
-and try again.
-
-## What if there are unexpected errors in IDEA?
-
-Try a combination of the following steps:
-
-- File > Refresh
-- Project > Clean
-- Recreate the generated sources:
-
-        $ sbt generate-typed-resources
-
-If nothing helps, rerun
-
-    $ sbt eclipse
-
-followed by the usual steps.
-
-## What if I get warnings referring to `ShadowGeoPoint` or similar during the Robolectric tests?
-
-    Warning: an error occurred while binding shadow class: ShadowGeoPoint
-
-These warnings are harmless, but if you are developing location-based apps,
-then you will need to add the corresponding `maps.jar` to the build path as an
-external jar. For example, for API level 17, you would find this below your
-Android SDK installation folder:
-
-    android-sdks/add-ons/addon-google_apis-google-17/libs/maps.jar
-
-## Why does my app work when I run it through Eclipse but force-close when I run it through sbt?
-
-We are not sure but believe that the AndroidProguardScala plugin enables
-Eclipse to create a better apk (application package) than sbt on its own.
-
-## Why don't you cover in-container functional testing?
-
-Francois-Xavier Thomas's
-[giter8 template](http://github.com/fxthomas/android-app.g8) does generate
-a sample in-container functional test based on
-[ActivityInstrumentationTestCase2](http://developer.android.com/reference/android/test/ActivityInstrumentationTestCase2.html),
-but this stopped working for me once my activity became more complex (by mixing
-in traits etc.). I have given up on this type of testing for now and have been
-testing with Robolectric as an alternative.
-
-## Why don't you provide a giter8 template?
-
-Because this work is preliminary and I want it to stabilize before turning
-it into a template. And there are some manual steps that still need to be
-automated.
-
-## What if I want to start from scratch?
-
-**TODO**
+- back in IDEA, confirm that you want to reload the project
+ 
+- reconfirm the location of the Android manifest file
 
 # Acknowledgments
 
