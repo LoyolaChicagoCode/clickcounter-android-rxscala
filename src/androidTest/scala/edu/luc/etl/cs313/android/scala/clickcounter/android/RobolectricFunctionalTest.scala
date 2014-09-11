@@ -1,9 +1,8 @@
-package edu.luc.etl.cs313.android.scala.clickcounter
-package android
+package edu.luc.etl.cs313.android.scala.clickcounter.android
 
-//import org.junit.runner.RunWith
-//import org.robolectric.Robolectric
-//import org.robolectric.RobolectricTestRunner
+import org.junit.runner.RunWith
+import org.robolectric.{Robolectric, RobolectricTestRunner}
+import org.scalatest.junit.JUnitSuite
 
 /**
  * Concrete Robolectric test subclass. This test will not work in sbt.
@@ -13,8 +12,8 @@ package android
  * @author laufer
  * @see http://pivotal.github.com/robolectric
  */
-//@RunWith(classOf[RobolectricTestRunner])
-//class RobolectricFunctionalTest extends AbstractFunctionalTest {
-//
-//  override protected lazy val activity = Robolectric.buildActivity(classOf[MainActivity]).create().start().get
-//}
+@RunWith(classOf[RobolectricTestRunner])
+class RobolectricFunctionalTest extends JUnitSuite with AbstractFunctionalTest {
+
+  override protected lazy val activity = Robolectric.buildActivity(classOf[MainActivity]).create().start().get
+}
