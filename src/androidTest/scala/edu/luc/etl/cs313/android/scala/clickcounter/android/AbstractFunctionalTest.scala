@@ -12,7 +12,7 @@ trait AbstractFunctionalTest {
   /**
    * The activity to be provided by concrete subclasses of this test.
    */
-  protected def activity(): MainActivity
+  protected def activity: MainActivity
 
   @Test def testActivityExists() {
     assertNotNull(activity)
@@ -57,11 +57,11 @@ trait AbstractFunctionalTest {
 
   // auxiliary methods for easy access to UI widgets
 
-  def displayedValue() = activity.findView(TR.textview_value).getText.toString.toInt
+  def displayedValue = activity.findView(TR.textview_value).getText.toString.toInt
 
-  def incButton() = activity.findView(TR.button_increment)
+  def incButton = activity.findView(TR.button_increment)
 
-  def decButton() = activity.findView(TR.button_decrement)
+  def decButton = activity.findView(TR.button_decrement)
 
-  def resetButton() = activity.findView(TR.button_reset)
+  def resetButton = activity.findView(TR.button_reset)
 }

@@ -111,7 +111,8 @@ functional tests.
     $ sbt test
     
 *In-container Android instrumentation tests are included (sharing a testcase 
-superclass with the Robolectric tests) but not currently working.* 
+superclass with the Robolectric tests) and work in principle, but not with
+the current build file for reasons we do not yet understand.* 
 
 # Developing with IntelliJ IDEA
 
