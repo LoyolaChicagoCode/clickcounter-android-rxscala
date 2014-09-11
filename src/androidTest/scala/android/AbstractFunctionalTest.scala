@@ -1,4 +1,4 @@
-package edu.luc.etl.cs313.android.scala.clickcounter.android
+package edu.luc.etl.cs313.android.scala.rxclickcounter.android
 
 import junit.framework.Assert._
 import org.junit.Test

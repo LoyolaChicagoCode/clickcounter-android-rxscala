@@ -1,4 +1,4 @@
-package edu.luc.etl.cs313.android.scala.clickcounter.model
+package edu.luc.etl.cs313.android.scala.rxclickcounter.model
 
 import scala.language.reflectiveCalls
 import org.scalatest.{Matchers, WordSpec}

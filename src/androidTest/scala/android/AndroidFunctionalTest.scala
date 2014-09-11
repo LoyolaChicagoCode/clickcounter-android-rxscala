@@ -1,4 +1,4 @@
-package edu.luc.etl.cs313.android.scala.clickcounter.android
+package edu.luc.etl.cs313.android.scala.rxclickcounter.android
 
 import android.test.{ActivityInstrumentationTestCase2, UiThreadTest}
 

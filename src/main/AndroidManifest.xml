@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.luc.etl.cs313.android.scala.clickcounter.android"
+    package="edu.luc.etl.cs313.android.scala.rxclickcounter.android"
     android:versionCode="1"
     android:versionName="0.2">
 

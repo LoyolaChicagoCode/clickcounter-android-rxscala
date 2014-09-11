@@ -1,4 +1,4 @@
-package edu.luc.etl.cs313.android.scala.clickcounter.android
+package edu.luc.etl.cs313.android.scala.rxclickcounter.android
 
 import org.junit.runner.RunWith
 import org.robolectric.{Robolectric, RobolectricTestRunner}

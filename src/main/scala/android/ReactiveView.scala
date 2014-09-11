@@ -1,4 +1,4 @@
-package edu.luc.etl.cs313.android.scala.clickcounter
+package edu.luc.etl.cs313.android.scala.rxclickcounter
 package android
 
 import _root_.android.view.View
