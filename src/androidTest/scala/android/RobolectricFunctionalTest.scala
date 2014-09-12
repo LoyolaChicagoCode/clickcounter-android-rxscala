@@ -15,5 +15,6 @@ import org.scalatest.junit.JUnitSuite
 @RunWith(classOf[RobolectricTestRunner])
 class RobolectricFunctionalTest extends JUnitSuite with AbstractFunctionalTest {
 
-  override protected lazy val activity = Robolectric.buildActivity(classOf[MainActivity]).create().start().get
+  override protected lazy val activity =
+    Robolectric.buildActivity(classOf[MainActivity]).create().start().get
 }
