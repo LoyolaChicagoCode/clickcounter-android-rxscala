@@ -41,9 +41,7 @@ class MainActivity extends Activity with TypedActivity with ObservableView with 
   }
 }
 
-/**
- * An Observable that updates the value it holds.
- */
+/** An Observable that updates the value it holds. */
 trait ValueHolder extends Observer[Int] {
 
   var value = 0

@@ -25,14 +25,10 @@ trait ObservableView {
    */
   def onIncrement(view: View) { subject.onNext(Increment) }
 
-  /**
-   * Emits a semantic decrement event.
-   */
+  /** Emits a semantic decrement event. */
   def onDecrement(view: View) { subject.onNext(Decrement) }
 
-  /**
-   * Emits a semantic reset event.
-   */
+  /** Emits a semantic reset event. */
   def onReset(view: View) { subject.onNext(Reset) }
 }
 
@@ -44,9 +40,7 @@ trait ObservableView {
  */
 trait ViewUpdater extends Observer[(Int, ModelState)] with TypedViewHolder {
 
-  /**
-   * Updates the concrete view from a model response event.
-   */
+  /** Updates the concrete view from a model response event. */
   override def onNext(arg: (Int, ModelState)): Unit = {
     val (value, state) = arg
     // update counter value display

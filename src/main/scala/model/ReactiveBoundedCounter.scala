@@ -3,25 +3,19 @@ package model
 
 import rx.lang.scala._
 
-/**
- * A semantic input event.
- */
+/** A semantic input event. */
 trait InputEvent
 case object Increment extends InputEvent
 case object Decrement extends InputEvent
 case object Reset extends InputEvent
 
-/**
- * An abstract model state.
- */
+/** An abstract model state. */
 trait ModelState
 case object Empty extends ModelState
 case object Counting extends ModelState
 case object Full extends ModelState
 
-/**
- * A stateless, reactive bounded counter.
- */
+/** A stateless, reactive bounded counter. */
 class ReactiveBoundedCounter(val min: Int, val max: Int) extends Observer[(Int, InputEvent)] {
 
   // Reflection in conjunction with default argument value is very messy.
@@ -31,9 +25,7 @@ class ReactiveBoundedCounter(val min: Int, val max: Int) extends Observer[(Int, 
 
   require { min < max }
 
-  /**
-   * The internal subject for emitting response events.
-   */
+  /** The internal subject for emitting response events. */
   private lazy val subject = Subject[(Int, ModelState)]
 
   /**
