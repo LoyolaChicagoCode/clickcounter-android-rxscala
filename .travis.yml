@@ -1,0 +1,7 @@
+language: scala
+scala:
+   - 2.10.4
+android:
+  components:
+    - build-tools-19.1.0
+    - android-19
