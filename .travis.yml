@@ -4,3 +4,6 @@ scala:
 android:
   components:
     - android-19
+before_install:
+  - env
+  - which android
