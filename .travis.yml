@@ -1,9 +1,2 @@
 language: scala
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq lib32stdc++6 lib32z1
-  - wget http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz
-  - tar -zxf android-sdk_r23.0.2-linux.tgz
-  - export ANDROID_HOME=$PWD/android-sdk-linux
-  - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-  - echo yes | android update sdk --filter tools,platform-tools,build-tools-21.1.1,android-19,extra-android-support,extra-android-m2repository,extra-google-m2repository --no-ui --force --no-https --all > /dev/null
+before_install: ./install-prereqs.sh
