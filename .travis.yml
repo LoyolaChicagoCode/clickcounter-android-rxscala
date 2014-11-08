@@ -2,6 +2,8 @@ language: scala
 before_install:
   - wget http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz
   - tar -zxf android-sdk_r23.0.2-linux.tgz
-  - export ANDROID_HOME=`pwd`/android-sdk-linux
+  - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
   - echo yes | android update sdk --filter tools,platform-tools,build-tools-19.1.0,android-19,extra-android-support,extra-android-m2repository,extra-google-m2repository --no-ui --force --no-https --all
+  - ls $ANDROID_HOME/build-tools
+  - ls $ANDROID_HOME/build-tools/19.1.0
