@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # Installs the required prerequisites for an sbt-based Android build.
-# Designed for use with Travis-CI.
+# Designed for use with Travis-CI, but can also be used locally
+# (assuming JDK and sbt are already installed).
 
 # install required Ubuntu packages
 
