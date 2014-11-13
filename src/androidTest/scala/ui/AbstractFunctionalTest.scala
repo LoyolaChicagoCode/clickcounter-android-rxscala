@@ -14,16 +14,16 @@ trait AbstractFunctionalTest {
    */
   protected def activity: MainActivity
 
-  @Test def testActivityExists() {
+  @Test def testActivityExists(): Unit = {
     assertNotNull(activity)
   }
 
-  @Test def testActivityInitialValue() {
+  @Test def testActivityInitialValue(): Unit = {
     val t = activity.findView(TR.textview_value)
     assertEquals(0, t.getText.toString.toInt)
   }
 
-  @Test def testActivityScenarioIncReset() {
+  @Test def testActivityScenarioIncReset(): Unit = {
     assertEquals(0, displayedValue)
     assertTrue(incButton.isEnabled)
     assertFalse(decButton.isEnabled)
@@ -40,7 +40,7 @@ trait AbstractFunctionalTest {
     assertTrue(resetButton.isEnabled)
   }
 
-  @Test def testActivityScenarioIncUntilFull() {
+  @Test def testActivityScenarioIncUntilFull(): Unit = {
     assertEquals(0, displayedValue)
     assertTrue(incButton.isEnabled)
     assertFalse(decButton.isEnabled)
