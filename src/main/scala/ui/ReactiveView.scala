@@ -23,13 +23,13 @@ trait ObservableView {
    * usually with the help of the graphical layout editor; the connection also
    * shows up in the XML source of the view layout.
    */
-  def onIncrement(view: View) { subject.onNext(Increment) }
+  def onIncrement(): Unit = subject.onNext(Increment)
 
   /** Emits a semantic decrement event. */
-  def onDecrement(view: View) { subject.onNext(Decrement) }
+  def onDecrement(): Unit = subject.onNext(Decrement)
 
   /** Emits a semantic reset event. */
-  def onReset(view: View) { subject.onNext(Reset) }
+  def onReset(): Unit = subject.onNext(Reset)
 }
 
 /**

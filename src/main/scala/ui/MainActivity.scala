@@ -17,7 +17,7 @@ class MainActivity extends Activity with TypedActivity with ObservableView with 
 
   private def TAG = "clickcounter-android-activity"
 
-  override def onCreate(savedInstanceState: Bundle) {
+  override def onCreate(savedInstanceState: Bundle) = {
     super.onCreate(savedInstanceState)
     Log.i(TAG, "onCreate")
     // inject the (implicit) dependency on the view
@@ -34,7 +34,7 @@ class MainActivity extends Activity with TypedActivity with ObservableView with 
     counter.observable.subscribe(this)
   }
 
-  override def onStart() {
+  override def onStart() = {
     super.onStart()
     Log.i(TAG, "onStart")
     this.subject.onNext(model.Reset)
