@@ -16,11 +16,11 @@ class AndroidFunctionalTest
 
   override protected lazy val activity = getActivity
 
-  @UiThreadTest override def testActivityScenarioIncReset() {
+  @UiThreadTest override def testActivityScenarioIncReset(): Unit = {
     super.testActivityScenarioIncReset()
   }
 
-  @UiThreadTest override def testActivityScenarioIncUntilFull() {
+  @UiThreadTest override def testActivityScenarioIncUntilFull(): Unit = {
     super.testActivityScenarioIncUntilFull()
   }
 }
