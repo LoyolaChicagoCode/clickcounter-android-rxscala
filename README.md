@@ -21,7 +21,7 @@ This example is intended as a starting point for anyone planning develop
       with ScalaTest
     - [Mock objects](http://en.wikipedia.org/wiki/Mock_object) with [ScalaMock](http://scalamock.org/)
     - Functional testing (out-of-container) using [Robolectric](http://pivotal.github.com/robolectric/)
-
+- End-to-end example of continuous integration (CI) for Scala/Android.
 
 # Building and Running
 

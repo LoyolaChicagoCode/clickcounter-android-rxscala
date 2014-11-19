@@ -8,10 +8,6 @@ import android.Keys._
 
 android.Plugin.androidBuild
 
-instrumentSettings
-
-org.scoverage.coveralls.CoverallsPlugin.coverallsSettings
-
 name := "clickcounter-android-rxscala"
 
 version := "0.2.2"
@@ -29,6 +25,15 @@ libraryDependencies ++= Seq(
   "com.netflix.rxjava" % "rxjava-scala" % "0.20.4",
   "com.netflix.rxjava" % "rxjava-android" % "0.20.4"
 )
+
+// The next few lines will work only with sbt-scoverage version 0.99.7.1.
+// Do not update until sbt-scoverage 1.0 stabilizes!
+
+instrumentSettings
+
+ScoverageKeys.excludedPackages in ScoverageCompile := """.*\.TR.*;.*\.TypedLayoutInflater;.*\.TypedResource;.*\.TypedViewHolder;.*\.TypedLayoutInflater"""
+
+org.scoverage.coveralls.CoverallsPlugin.coverallsSettings
 
 val androidJars = (platformJars in Android, baseDirectory) map {
   (j, b) => Seq(Attributed.blank(b / "bin" / "classes"), Attributed.blank(file(j._1)))
