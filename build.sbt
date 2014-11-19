@@ -10,6 +10,8 @@ android.Plugin.androidBuild
 
 instrumentSettings
 
+org.scoverage.coveralls.CoverallsPlugin.coverallsSettings
+
 name := "clickcounter-android-rxscala"
 
 version := "0.2.2"

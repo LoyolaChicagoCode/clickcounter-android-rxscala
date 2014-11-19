@@ -1,2 +1,3 @@
 language: scala
 before_install: ./install-prereqs.sh
+script: "sbt coveralls"
