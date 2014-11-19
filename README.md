@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/lucoodevcourse/clickcounter-android-rxscala.svg?branch=master)](https://travis-ci.org/lucoodevcourse/clickcounter-android-rxscala)
+[![Build Status](https://travis-ci.org/lucoodevcourse/clickcounter-android-rxscala.svg?branch=master)](https://travis-ci.org/lucoodevcourse/clickcounter-android-rxscala) 
+[![Coverage Status](https://img.shields.io/coveralls/lucoodevcourse/clickcounter-android-rxscala.svg)](https://coveralls.io/r/lucoodevcourse/clickcounter-android-rxscala)
+
 
 # Learning Objectives
 
