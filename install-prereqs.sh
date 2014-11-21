@@ -4,6 +4,12 @@
 # Designed for use with Travis-CI, but can also be used locally
 # (assuming JDK and sbt are already installed).
 
+echo reviewing default Unix environment variables
+
+env
+
+exit 1
+
 # install required Ubuntu packages
 
 sudo apt-get update -qq
