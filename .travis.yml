@@ -1,9 +1,23 @@
 language: scala
+
 env:
   global:
-    - ANDROID_HOME=$PWD/android-sdk-linux
-    - ANDROID_SDK_VERSION=23.0.2
-    - ANDROID_BUILD_TOOLS_VERSION=21.1.1
-    - ANDROID_API_LEVEL=19
+  - ANDROID_HOME=$PWD/android-sdk-linux
+  - ANDROID_SDK_VERSION=23.0.2
+  - ANDROID_BUILD_TOOLS_VERSION=21.1.1
+  - ANDROID_API_LEVEL=19
+  - secure: E+reCGK5FufyBcRpld5TPkA3e9sqtBzUEnSnCKMatRKkBVD6Oq4wdFpuVVDPsjWW5Hgba2mwJlPggY9/mEL0AygeH8pY9CNNlzvxTEqZqluQv+isQ/4/yW9hgCCeBSOCmLRcnV67ifmkk2ND3iW4egMy1MVqDRp4XiB2Yw1wlA4=
+  - secure: NlN6Cw7dxfE/PE0ig7wklJsVziqrtUTcHC16+YpLNk8LV8kWaZvm7z7jJVxoINB1YxDCg1wdavNrUwVBvX8JYeP/gnZc4+e+ZlJ4zT8EFAS/axskmsMHuOFZXTOAKQRyny/YLHt+ICLg2mVhjWttfv6EeNhgVAkSKy84k13uQ6Y=
+
 before_install: ./install-prereqs.sh
 script: "sbt coveralls"
+after_success:
+  - >
+      test "${TRAVIS_PULL_REQUEST}" = 'false' &&
+      PROJECT_VERSION=$(TERM=dumb sbt 'show version' | tail -n 1 | cut -c8- -) &&
+      BINTRAY_VERSION=${PROJECT_VERSION}.${TRAVIS_BUILD_NUMBER} &&
+      echo user=${BINTRAY_USER}:${BINTRAY_API_KEY} > $HOME/.curlrc &&
+      curl -H "Content-Type: application/json" -d "{ \"name\": \"${BINTRAY_VERSION}\" }" https://bintray.com/api/v1/packages/lucoodevcourse/generic/clickcounter-android-rxscala/versions
+#      curl -T target/android-bin/clickcounter-android-rxscala-debug.apk 'https://bintray.com/api/v1/content/lucoodevcourse/generic/clickcounter-android-rxscala/0.2.15/clickcounter-android-rxscala-debug.apk;publish=1?override=1'
+
+# last command gets rejected by bintray!?!

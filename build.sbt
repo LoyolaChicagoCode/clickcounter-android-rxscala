@@ -12,7 +12,7 @@ organization := "lucoodevcourse"
 
 name := "clickcounter-android-rxscala"
 
-version := "0.2.2"
+version := "0.2"
 
 licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
 
