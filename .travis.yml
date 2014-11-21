@@ -1,8 +1,9 @@
 language: scala
 env:
-  - ANDROID_HOME=$PWD/android-sdk-linux
-  - ANDROID_SDK_VERSION=23.0.2
-  - ANDROID_BUILD_TOOLS_VERSION=21.1.1
-  - ANDROID_API_LEVEL=19
+  global:
+    - ANDROID_HOME=$PWD/android-sdk-linux
+    - ANDROID_SDK_VERSION=23.0.2
+    - ANDROID_BUILD_TOOLS_VERSION=21.1.1
+    - ANDROID_API_LEVEL=19
 before_install: ./install-prereqs.sh
 script: "sbt coveralls"
