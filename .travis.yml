@@ -1,3 +1,4 @@
+env: ANDROID_HOME=$HOME/android-sdk-linux
 language: scala
 before_install: ./install-prereqs.sh
 script: "sbt coveralls"
