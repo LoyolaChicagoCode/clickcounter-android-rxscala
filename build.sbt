@@ -8,7 +8,7 @@ import android.Keys._
 
 android.Plugin.androidBuild
 
-organization := "edu.luc.etl"
+organization := "lucoodevcourse"
 
 name := "clickcounter-android-rxscala"
 
