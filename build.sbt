@@ -8,9 +8,13 @@ import android.Keys._
 
 android.Plugin.androidBuild
 
+organization := "edu.luc.etl"
+
 name := "clickcounter-android-rxscala"
 
 version := "0.2.2"
+
+licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
 
 scalacOptions in Compile ++= Seq("-feature", "-unchecked", "-deprecation")
 
@@ -29,20 +33,12 @@ libraryDependencies ++= Seq(
 // The next few lines will work only with sbt-scoverage version 0.99.7.1.
 // Do not update until sbt-scoverage 1.0 stabilizes!
 
-instrumentSettings
-
-ScoverageKeys.excludedPackages in ScoverageCompile := """.*\.TR.*;.*\.TypedLayoutInflater;.*\.TypedResource;.*\.TypedViewHolder;.*\.TypedLayoutInflater"""
-
-org.scoverage.coveralls.CoverallsPlugin.coverallsSettings
-
 val androidJars = (platformJars in Android, baseDirectory) map {
   (j, b) => Seq(Attributed.blank(b / "bin" / "classes"), Attributed.blank(file(j._1)))
 }
 
 // Make the actually targeted Android jars available to Robolectric for shadowing.
 managedClasspath in Test <++= androidJars
-
-managedClasspath in ScoverageCompile <++= androidJars
 
 // With this option, we cannot have dependencies in the test scope!
 debugIncludesTests in Android := false
@@ -62,3 +58,11 @@ proguardOptions in Android ++= Seq(
 )
 
 apkbuildExcludes in Android += "LICENSE.txt"
+
+instrumentSettings
+
+ScoverageKeys.excludedPackages in ScoverageCompile := """.*\.TR.*;.*\.TypedLayoutInflater;.*\.TypedResource;.*\.TypedViewHolder;.*\.TypedLayoutInflater"""
+
+org.scoverage.coveralls.CoverallsPlugin.coverallsSettings
+
+managedClasspath in ScoverageCompile <++= androidJars
