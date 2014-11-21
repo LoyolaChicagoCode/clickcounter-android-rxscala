@@ -12,8 +12,6 @@ sudo apt-get install -qq lib32stdc++6 lib32z1
 # manually install Android SDK components
 
 export ANDROID_SDK_VERSION=23.0.2
-export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-
 wget http://dl.google.com/android/android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
 tar -zxf android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
-echo yes | android update sdk --filter tools,platform-tools,build-tools-21.1.1,android-19,extra-android-support,extra-android-m2repository,extra-google-m2repository --no-ui --force --no-https --all > /dev/null
+echo yes | $ANDROID_HOME/tools/android update sdk --filter tools,platform-tools,build-tools-21.1.1,android-19,extra-android-support,extra-android-m2repository,extra-google-m2repository --no-ui --force --no-https --all > /dev/null
