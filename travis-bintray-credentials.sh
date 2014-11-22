@@ -7,5 +7,3 @@ EOF
 
 echo "Created $FILE containing bintray credentials for $BINTRAY_USER:"
 ls -la $FILE
-wc $FILE
-cut -c-13 ~/.curlrc
