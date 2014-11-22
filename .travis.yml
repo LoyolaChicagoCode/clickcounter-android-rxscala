@@ -8,6 +8,7 @@ env:
   - ANDROID_API_LEVEL=19
   - BINTRAY_ORG=${TRAVIS_REPO_SLUG%/*}
   - BINTRAY_PKG=${TRAVIS_REPO_SLUG#*/}
+  - BINTRAY_API=https://bintray.com/api/v1
   - secure: Tf5EVE4O5NUu6tcYxS2+RUIkGMohTmMyXYCtJysjEGHieQtYYvCxW40tGKQAsqmCyo0G2ObPHQsnZoIagFVd/+MnxWeyyZuNFG2b86L/vpp58Pdz53LyUDY3BL9hbeHkJI68FQzaitzbxGmc1P8Ocsg5lFLUDOs/UsjFzFoOTFc=
   - secure: fS4wYeFopSVSda6S3RR7eE658CCf8PBnP3cq0DBUs6iUBp1gRzYvBD4sFD2L3vLiE0m88M824XYrT+m4uoUdZo3/KZ3NDNX3pDBAfLAzN5HG+N30ss6O9OBSmA6sEuHIuCjfyejmyC5DnShZsR4iKoa55b4lynAezpuAUZmuGwk=
 
@@ -26,6 +27,6 @@ after_success:
   PROJECT_VERSION=$(TERM=dumb sbt 'show version' | tail -n 1 | cut -c8- -) &&
   BINTRAY_VERSION=${PROJECT_VERSION}.${TRAVIS_BUILD_NUMBER} &&
   ./travis-bintray-credentials.sh &&
-  curl -H "Content-Type: application/json" -d "{ \"name\": \"${BINTRAY_VERSION}\" }" https://bintray.com/api/v1/packages/${BINTRAY_ORG}/generic/${BINTRAY_PKG}/versions &&
+  curl -H "Content-Type: application/json" -d "{ \"name\": \"${BINTRAY_VERSION}\" }" ${BINTRAY_API}/packages/${BINTRAY_ORG}/generic/${BINTRAY_PKG}/versions &&
   sbt android:package &&
-  curl -T target/android-bin/${BINTRAY_PKG}-debug.apk "https://bintray.com/api/v1/content/${BINTRAY_ORG}/generic/${BINTRAY_PKG}/${BINTRAY_VERSION}/${BINTRAY_PKG}-${BINTRAY_VERSION}.apk;publish=1"
+  curl -T target/android-bin/${BINTRAY_PKG}-debug.apk "${BINTRAY_API}/content/${BINTRAY_ORG}/generic/${BINTRAY_PKG}/${BINTRAY_VERSION}/${BINTRAY_PKG}-${BINTRAY_VERSION}.apk;publish=1"
