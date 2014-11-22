@@ -9,9 +9,21 @@ env:
   - secure: Tf5EVE4O5NUu6tcYxS2+RUIkGMohTmMyXYCtJysjEGHieQtYYvCxW40tGKQAsqmCyo0G2ObPHQsnZoIagFVd/+MnxWeyyZuNFG2b86L/vpp58Pdz53LyUDY3BL9hbeHkJI68FQzaitzbxGmc1P8Ocsg5lFLUDOs/UsjFzFoOTFc=
   - secure: fS4wYeFopSVSda6S3RR7eE658CCf8PBnP3cq0DBUs6iUBp1gRzYvBD4sFD2L3vLiE0m88M824XYrT+m4uoUdZo3/KZ3NDNX3pDBAfLAzN5HG+N30ss6O9OBSmA6sEuHIuCjfyejmyC5DnShZsR4iKoa55b4lynAezpuAUZmuGwk=
 
-script: echo "skipping actual script for now"
+before_install:
+- sudo apt-get update -qq
+- sudo apt-get install -qq lib32stdc++6 lib32z1
+- wget http://dl.google.com/android/android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
+- tar -zxf android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
+- echo yes | ${ANDROID_HOME}/tools/android update sdk --filter tools,platform-tools,build-tools-${ANDROID_BUILD_TOOLS_VERSION},android-${ANDROID_API_LEVEL},extra-android-support,extra-android-m2repository,extra-google-m2repository --no-ui --force --no-https --all > /dev/null
+
+script: "sbt coveralls"
 
 after_success:
-- |
-  test "${TRAVIS_PULL_REQUEST}" = 'false' && PROJECT_VERSION=$(TERM=dumb sbt 'show version' | tail -n 1 | cut -c8- -) && BINTRAY_VERSION=${PROJECT_VERSION}.${TRAVIS_BUILD_NUMBER} && ./travis-bintray-credentials.sh # && curl --config $HOME/.curlrc -H "Content-Type: application/json" -d "{ \"name\": \"${BINTRAY_VERSION}\" }" https://bintray.com/api/v1/packages/lucoodevcourse/generic/clickcounter-android-rxscala/versions
-  echo "TRIED: " curl --config $HOME/.curlrc -H "Content-Type: application/json" -d "{ \"name\": \"${BINTRAY_VERSION}\" }" https://bintray.com/api/v1/packages/lucoodevcourse/generic/clickcounter-android-rxscala/versions
+- >
+  test "${TRAVIS_PULL_REQUEST}" = 'false' &&
+  PROJECT_VERSION=$(TERM=dumb sbt 'show version' | tail -n 1 | cut -c8- -) &&
+  BINTRAY_VERSION=${PROJECT_VERSION}.${TRAVIS_BUILD_NUMBER} &&
+  ./travis-bintray-credentials.sh &&
+  curl --config $HOME/.curlrc -H "Content-Type: application/json" -d "{ \"name\": \"${BINTRAY_VERSION}\" }" https://bintray.com/api/v1/packages/lucoodevcourse/generic/clickcounter-android-rxscala/versions &&
+  sbt android:package &&
+  curl -T target/android-bin/clickcounter-android-rxscala-debug.apk 'https://bintray.com/api/v1/content/lucoodevcourse/generic/clickcounter-android-rxscala/${BINTRAY_VERSION}/clickcounter-android-rxscala-${BINTRAY_VERSION}.apk;publish=1'
