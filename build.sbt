@@ -30,9 +30,6 @@ libraryDependencies ++= Seq(
   "com.netflix.rxjava" % "rxjava-android" % "0.20.4"
 )
 
-// The next few lines will work only with sbt-scoverage version 0.99.7.1.
-// Do not update until sbt-scoverage 1.0 stabilizes!
-
 val androidJars = (platformJars in Android, baseDirectory) map {
   (j, b) => Seq(Attributed.blank(b / "bin" / "classes"), Attributed.blank(file(j._1)))
 }
@@ -58,6 +55,9 @@ proguardOptions in Android ++= Seq(
 )
 
 apkbuildExcludes in Android += "LICENSE.txt"
+
+// The next few lines will work only with sbt-scoverage version 0.99.7.1.
+// Do not update until sbt-scoverage 1.0 stabilizes!
 
 instrumentSettings
 
