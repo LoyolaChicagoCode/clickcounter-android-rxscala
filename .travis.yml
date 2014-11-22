@@ -9,14 +9,16 @@ env:
   - secure: E+reCGK5FufyBcRpld5TPkA3e9sqtBzUEnSnCKMatRKkBVD6Oq4wdFpuVVDPsjWW5Hgba2mwJlPggY9/mEL0AygeH8pY9CNNlzvxTEqZqluQv+isQ/4/yW9hgCCeBSOCmLRcnV67ifmkk2ND3iW4egMy1MVqDRp4XiB2Yw1wlA4=
   - secure: NlN6Cw7dxfE/PE0ig7wklJsVziqrtUTcHC16+YpLNk8LV8kWaZvm7z7jJVxoINB1YxDCg1wdavNrUwVBvX8JYeP/gnZc4+e+ZlJ4zT8EFAS/axskmsMHuOFZXTOAKQRyny/YLHt+ICLg2mVhjWttfv6EeNhgVAkSKy84k13uQ6Y=
 
-before_install:
-- sudo apt-get update -qq
-- sudo apt-get install -qq lib32stdc++6 lib32z1
-- wget http://dl.google.com/android/android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
-- tar -zxf android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
-- echo yes | ${ANDROID_HOME}/tools/android update sdk --filter tools,platform-tools,build-tools-${ANDROID_BUILD_TOOLS_VERSION},android-${ANDROID_API_LEVEL},extra-android-support,extra-android-m2repository,extra-google-m2repository --no-ui --force --no-https --all > /dev/null
+#before_install:
+#- sudo apt-get update -qq
+#- sudo apt-get install -qq lib32stdc++6 lib32z1
+#- wget http://dl.google.com/android/android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
+#- tar -zxf android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
+#- echo yes | ${ANDROID_HOME}/tools/android update sdk --filter tools,platform-tools,build-tools-${ANDROID_BUILD_TOOLS_VERSION},android-${ANDROID_API_LEVEL},extra-android-support,extra-android-m2repository,extra-google-m2repository --no-ui --force --no-https --all > /dev/null
 
-script: "sbt coveralls"
+#script: "sbt coveralls"
+
+script: echo "skipping actual script for now"
 
 after_success:
   - >
@@ -25,7 +27,9 @@ after_success:
       BINTRAY_VERSION=${PROJECT_VERSION}.${TRAVIS_BUILD_NUMBER} &&
       ./travis-bintray-credentials.sh &&
       curl --config $HOME/.curlrc -H "Content-Type: application/json" -d "{ \"name\": \"${BINTRAY_VERSION}\" }" https://bintray.com/api/v1/packages/lucoodevcourse/generic/clickcounter-android-rxscala/versions
-  - echo "TRIED: " curl --config $HOME/.curlrc -H "Content-Type: application/json" -d "{ \"name\": \"${BINTRAY_VERSION}\" }" https://bintray.com/api/v1/packages/lucoodevcourse/generic/clickcounter-android-rxscala/versions
+
+    echo "TRIED: " curl --config $HOME/.curlrc -H "Content-Type: application/json" -d "{ \"name\": \"${BINTRAY_VERSION}\" }" https://bintray.com/api/v1/packages/lucoodevcourse/generic/clickcounter-android-rxscala/versions
+
 #       &&
 #      sbt android:package &&
 #      curl -T target/android-bin/clickcounter-android-rxscala-debug.apk 'https://bintray.com/api/v1/content/lucoodevcourse/generic/clickcounter-android-rxscala/${BINTRAY_VERSION}/clickcounter-android-rxscala-${BINTRAY_VERSION}.apk;publish=1'
