@@ -21,7 +21,7 @@ scalacOptions in Compile ++= Seq("-feature", "-unchecked", "-deprecation")
 platformTarget in Android := "android-19"
 
 libraryDependencies ++= Seq(
-  "org.robolectric" % "robolectric" % "2.4" % "test",
+  "org.robolectric" % "robolectric" % "2.3" % "test",
   "junit" % "junit" % "4.11" % "test",
   "org.scalamock" %% "scalamock-scalatest-support" % "3.2" % "test",
   "org.scalatest" %% "scalatest" % "2.2.1" % "test",
