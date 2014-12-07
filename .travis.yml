@@ -9,8 +9,8 @@ env:
   - BINTRAY_ORG=${TRAVIS_REPO_SLUG%/*}
   - BINTRAY_PKG=${TRAVIS_REPO_SLUG#*/}
   - BINTRAY_API=https://bintray.com/api/v1
-  - secure: Tf5EVE4O5NUu6tcYxS2+RUIkGMohTmMyXYCtJysjEGHieQtYYvCxW40tGKQAsqmCyo0G2ObPHQsnZoIagFVd/+MnxWeyyZuNFG2b86L/vpp58Pdz53LyUDY3BL9hbeHkJI68FQzaitzbxGmc1P8Ocsg5lFLUDOs/UsjFzFoOTFc=
-  - secure: fS4wYeFopSVSda6S3RR7eE658CCf8PBnP3cq0DBUs6iUBp1gRzYvBD4sFD2L3vLiE0m88M824XYrT+m4uoUdZo3/KZ3NDNX3pDBAfLAzN5HG+N30ss6O9OBSmA6sEuHIuCjfyejmyC5DnShZsR4iKoa55b4lynAezpuAUZmuGwk=
+  - secure: fz5zN8tYtRc+TLSu2PSC3saC2t1BPx8E54Va7drysBb4HI4457SJi5aYSAOmUMOhBPHnl7dERJAqBtoRgRwiR0CWrhrYKnmOgpCtTr/1HjF+jzhpHUOa0ZP54neBCeKLjWwaw2xWGfbghzxczUW/qCgZ+vYjEjtFvySc1meEwlc=
+  - secure: BHC3zYV+76L/hgctCvch+O/72tEAnELfogeZGTYwu+oUJKTDVc7Rv2OhrFZlIVrnsjzgz6FqDKrOzfqnLqhnrm9cgnocq0gC2hp0FiwS1yPU+9FRHzjzk6Vk9ZYnCiwB/CnQ+zEqYXUP4+3fFhdGk/RNyfLgAkedg7Xb0KvNw04=
 
 before_install:
 - sudo apt-get update -qq
