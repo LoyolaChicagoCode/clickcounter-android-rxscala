@@ -16,6 +16,8 @@ version := "0.2"
 
 licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
 
+javacOptions ++= Seq("-target", "1.6", "-source", "1.6") // so we can build with Java 7 or 8
+
 scalacOptions in Compile ++= Seq("-feature", "-unchecked", "-deprecation")
 
 platformTarget in Android := "android-19"
