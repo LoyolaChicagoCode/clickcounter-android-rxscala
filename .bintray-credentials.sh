@@ -7,3 +7,4 @@ EOF
 
 echo "Created $FILE containing bintray credentials:"
 ls -la $FILE
+cut -c-14,75- $FILE
