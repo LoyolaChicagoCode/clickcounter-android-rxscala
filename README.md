@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/lucoodevcourse/clickcounter-android-rxscala.svg?branch=master)](https://travis-ci.org/lucoodevcourse/clickcounter-android-rxscala) 
-[![Coverage Status](https://img.shields.io/coveralls/lucoodevcourse/clickcounter-android-rxscala.svg)](https://coveralls.io/r/lucoodevcourse/clickcounter-android-rxscala) 
-[![Download](https://api.bintray.com/packages/lucoodevcourse/generic/clickcounter-android-rxscala/images/download.svg) ](https://bintray.com/lucoodevcourse/generic/clickcounter-android-rxscala/_latestVersion)
+[![Build Status](https://travis-ci.org/LoyolaChicagoCode/clickcounter-android-rxscala.svg?branch=master)](https://travis-ci.org/LoyolaChicagoCode/clickcounter-android-rxscala) 
+[![Coverage Status](https://img.shields.io/coveralls/LoyolaChicagoCode/clickcounter-android-rxscala.svg)](https://coveralls.io/r/LoyolaChicagoCode/clickcounter-android-rxscala) 
+[![Download](https://api.bintray.com/packages/loyolachicagocode/generic/clickcounter-android-rxscala/images/download.svg) ](https://bintray.com/loyolachicagocode/generic/clickcounter-android-rxscala/_latestVersion)
 
 # Learning Objectives
 
