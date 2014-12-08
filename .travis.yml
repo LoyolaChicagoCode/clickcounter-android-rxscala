@@ -9,7 +9,7 @@ env:
   - BINTRAY_PKG=${TRAVIS_REPO_SLUG#*/}
   - BINTRAY_API=https://bintray.com/api/v1
   - BINTRAY_USER=laufer
-  - secure: QVzYs555oMs9pTCVmX5FLD4hPfOoNk7+Y+Am+LbTFwxUULTt8UPiUaNDViScUl6XsquyNwa4xW4cCZmBYTuRTCev3q/GfY2BczYqYlK7lpX0w9U0AUthPT5iNhSJgoiQVlcPT5Tl5Z+ahBxnnPxhPmvM/Jre4maunPIgDvSVoeI=
+  - secure: XL+HRx6VtbVZyowdZitsiSvsQxa/7+KQYZoa2f0kkLAl1TgEYF6uGS2+DPHx44NI/l3JkOw0nfTfHaX61+SjkM6O0qGN4J6PypdXMHJBHHfftiYCc8nwvEbRSGpWZx4tK0SOYZYF3tqVNuk5MXzTzbvgOPJ86AF9Dq09Cqmko6o=
 before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -qq lib32stdc++6 lib32z1
