@@ -9,7 +9,7 @@ env:
   - BINTRAY_ORG=${TRAVIS_REPO_SLUG%/*}
   - BINTRAY_PKG=${TRAVIS_REPO_SLUG#*/}
   - BINTRAY_API=https://bintray.com/api/v1
-  - BINTRAY_USER=laufer
+  - secure: dzVQBmnDVwS0E+tmhxTblySS46Xr9Ium1RX5ewB7Rm3+H3Sz8VpnQKtcyHidAzzni7yhtADaY9fg/jFcslrVWZBU+ZSVnC8xBT1RsSuXGX5omWsYSn7kcIQcHiz56dLMhKNAgLCu9arKP8sSbQXQeRmE/Fu5qo2Pt6In2fX/Bds=
   - secure: SRS1jAxGqMwXPZvoWaMIFyz8LTSV/I3cco0Ahgs7zf5nE6+CWl6vIUHANIxpZORMKGIpUE1BzR8BmECcByphVGmMwwFWDxpKWoyiX67yRvmIhR0aQ7LsmzfdPnc+PpSQZzW+XluETudsTLT99yV4Tnch8jkfGulKwKy4HhuyqNY=
 
 before_install:
