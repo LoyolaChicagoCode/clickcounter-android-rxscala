@@ -1,33 +1,23 @@
 language: scala
-
 env:
   global:
   - ANDROID_HOME=$PWD/android-sdk-linux
   - ANDROID_SDK_VERSION=23.0.2
   - ANDROID_BUILD_TOOLS_VERSION=21.1.1
   - ANDROID_API_LEVEL=19
-  - BINTRAY_ORG=${TRAVIS_REPO_SLUG%/*}
+  - BINTRAY_ORG=`echo ${TRAVIS_REPO_SLUG%/*} | tr '[:upper:]' '[:lower:]'`
   - BINTRAY_PKG=${TRAVIS_REPO_SLUG#*/}
   - BINTRAY_API=https://bintray.com/api/v1
-  - secure: dzVQBmnDVwS0E+tmhxTblySS46Xr9Ium1RX5ewB7Rm3+H3Sz8VpnQKtcyHidAzzni7yhtADaY9fg/jFcslrVWZBU+ZSVnC8xBT1RsSuXGX5omWsYSn7kcIQcHiz56dLMhKNAgLCu9arKP8sSbQXQeRmE/Fu5qo2Pt6In2fX/Bds=
-  - secure: SRS1jAxGqMwXPZvoWaMIFyz8LTSV/I3cco0Ahgs7zf5nE6+CWl6vIUHANIxpZORMKGIpUE1BzR8BmECcByphVGmMwwFWDxpKWoyiX67yRvmIhR0aQ7LsmzfdPnc+PpSQZzW+XluETudsTLT99yV4Tnch8jkfGulKwKy4HhuyqNY=
-
+  - BINTRAY_USER=laufer
+  - secure: cPjiNgP64EnAy/APTydYILTwSEincsc9pQuOhCktD1HdFMXLSj9GMEyQvM8j4DZxsAdHOD5RgQvTazKEP+D8gpj50Qm8/cwwtNDOpQqRbq10Ulc5kUb2mLAe9+LdrzMERW2uvHwmu3ziYtJwBc5XZIcE3rL7o+ZZHjsEd5YLzjQ=
 before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -qq lib32stdc++6 lib32z1
 - wget http://dl.google.com/android/android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
 - tar -zxf android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
-- echo yes | ${ANDROID_HOME}/tools/android update sdk --filter tools,platform-tools,build-tools-${ANDROID_BUILD_TOOLS_VERSION},android-${ANDROID_API_LEVEL},extra-android-support,extra-android-m2repository,extra-google-m2repository --no-ui --force --no-https --all > /dev/null
-
-script: "sbt coveralls"
-
+- echo yes | ${ANDROID_HOME}/tools/android update sdk --filter tools,platform-tools,build-tools-${ANDROID_BUILD_TOOLS_VERSION},android-${ANDROID_API_LEVEL},extra-android-support,extra-android-m2repository,extra-google-m2repository
+  --no-ui --force --no-https --all > /dev/null
+script: sbt coveralls
 after_success:
-- >
-  test "${TRAVIS_PULL_REQUEST}" = 'false' &&
-  PROJECT_VERSION=$(TERM=dumb sbt 'show version' | tail -n 1 | cut -c8- -) &&
-  BINTRAY_VERSION=${PROJECT_VERSION}.${TRAVIS_BUILD_NUMBER} &&
-  BINTRAY_ORG=`echo $BINTRAY_ORG | tr '[:upper:]' '[:lower:]'` &&
-  ./.bintray-credentials.sh &&
-  curl -H "Content-Type: application/json" -d "{ \"name\": \"${BINTRAY_VERSION}\" }" ${BINTRAY_API}/packages/${BINTRAY_ORG}/generic/${BINTRAY_PKG}/versions &&
-  sbt android:package &&
-  curl -T target/android-bin/${BINTRAY_PKG}-debug.apk "${BINTRAY_API}/content/${BINTRAY_ORG}/generic/${BINTRAY_PKG}/${BINTRAY_VERSION}/${BINTRAY_PKG}-${BINTRAY_VERSION}.apk;publish=1"
+- |
+  test "${TRAVIS_PULL_REQUEST}" = 'false' && PROJECT_VERSION=$(TERM=dumb sbt 'show version' | tail -n 1 | cut -c8- -) && BINTRAY_VERSION=${PROJECT_VERSION}.${TRAVIS_BUILD_NUMBER} && ./.bintray-credentials.sh && curl -H "Content-Type: application/json" -d "{ \"name\": \"${BINTRAY_VERSION}\" }" ${BINTRAY_API}/packages/${BINTRAY_ORG}/generic/${BINTRAY_PKG}/versions && sbt android:package && curl -T target/android-bin/${BINTRAY_PKG}-debug.apk "${BINTRAY_API}/content/${BINTRAY_ORG}/generic/${BINTRAY_PKG}/${BINTRAY_VERSION}/${BINTRAY_PKG}-${BINTRAY_VERSION}.apk;publish=1"
