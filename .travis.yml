@@ -26,6 +26,7 @@ after_success:
   test "${TRAVIS_PULL_REQUEST}" = 'false' &&
   PROJECT_VERSION=$(TERM=dumb sbt 'show version' | tail -n 1 | cut -c8- -) &&
   BINTRAY_VERSION=${PROJECT_VERSION}.${TRAVIS_BUILD_NUMBER} &&
+  BINTRAY_ORG=`echo $BINTRAY_ORG | tr '[:upper:]' '[:lower:]'` &&
   ./.bintray-credentials.sh &&
   curl -H "Content-Type: application/json" -d "{ \"name\": \"${BINTRAY_VERSION}\" }" ${BINTRAY_API}/packages/${BINTRAY_ORG}/generic/${BINTRAY_PKG}/versions &&
   sbt android:package &&
