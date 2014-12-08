@@ -9,8 +9,8 @@ env:
   - BINTRAY_ORG=${TRAVIS_REPO_SLUG%/*}
   - BINTRAY_PKG=${TRAVIS_REPO_SLUG#*/}
   - BINTRAY_API=https://bintray.com/api/v1
+  - BINTRAY_USER=laufer
   - secure: SRS1jAxGqMwXPZvoWaMIFyz8LTSV/I3cco0Ahgs7zf5nE6+CWl6vIUHANIxpZORMKGIpUE1BzR8BmECcByphVGmMwwFWDxpKWoyiX67yRvmIhR0aQ7LsmzfdPnc+PpSQZzW+XluETudsTLT99yV4Tnch8jkfGulKwKy4HhuyqNY=
-  - secure: ccMJccgC/lwTzeVTwJCstbTmIvPvHPp2UZTbhdOVANKl1xHcvo+ayRjfSWSQNMiLo9IIupWXC4AyZ06qAkuA2Vdx4ZpuU6hp4DLEbwOaesYiEGslH2/HmdsPN0BlUcOk65BUfsO9WVwpx4Iqa8s4vwxbMrI+oV3U8oWsTd8wwdo=
 
 before_install:
 - sudo apt-get update -qq
