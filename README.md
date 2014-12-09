@@ -31,4 +31,4 @@ Please refer to [these notes](http://lucoodevcourse.bitbucket.org/notes/scalaand
 
 - [James Earl Douglas's SBTB 2014 presentation](https://www.youtube.com/watch?v=sZYAFWTyOlE)
 - [James Earl Douglas's Scala CI example](https://github.com/earldouglas/scala-ci): Travis and Coveralls
-- [Matthew Fellows's Scala CI/CD example])http://www.onegeek.com.au/scala/setting-up-travis-ci-for-scala): Travis and Bintray
+- [Matthew Fellows's Scala CI/CD example](http://www.onegeek.com.au/scala/setting-up-travis-ci-for-scala): Travis and Bintray
