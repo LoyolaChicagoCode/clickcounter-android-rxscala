@@ -20,12 +20,12 @@ This example is intended as a starting point for anyone planning develop
     - Unit testing and [Behavior-Driven Development (BDD)](http://en.wikipedia.org/wiki/Behavior-driven_development) 
       with ScalaTest
     - [Mock objects](http://en.wikipedia.org/wiki/Mock_object) with [ScalaMock](http://scalamock.org/)
-    - Functional testing (out-of-container) using [Robolectric](http://pivotal.github.com/robolectric/)
+    - Functional testing (out-of-container) using [Robolectric](http://robolectric.org/)
 - End-to-end example of continuous integration (CI) for Scala/Android (see status badges at the top of this file)
 
 # Building and Running
 
-Please refer to [these notes](http://lucoodevcourse.bitbucket.org/notes/scalaandroiddev.html) for details.
+Please refer to [these notes](http://lucoodevcourse.github.io/notes/scalaandroiddev.html) for details.
 
 # References
 
