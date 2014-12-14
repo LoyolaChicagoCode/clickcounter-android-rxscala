@@ -26,11 +26,12 @@ class MainActivity extends Activity with TypedActivity with ObservableView with 
     val holder = new ValueHolder { }
     val counter = new model.ReactiveBoundedCounter(0, 5)
     // connect everything in several steps using RxScala
-    // use map to add the current value to the button press
+    // use map to add the current value to the button press 
+    // from the observable view
     this.subject.map((holder.value, _)).subscribe(counter)
     // extract only the integer value
     counter.observable.map(_._1).subscribe(holder)
-    // connect the observable view directly to the model
+    // connect the view updater directly to the model
     counter.observable.subscribe(this)
   }
 
